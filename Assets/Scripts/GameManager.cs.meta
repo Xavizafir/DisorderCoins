@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 266534d1a1d827f47b600497277cc1d2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - indoCoinPrefab: {fileID: 8913314088454311300, guid: c44b3e4d27ea74a4eb0077a4d6e86cf0, type: 3}
+  - chinaCoinPrefab: {fileID: 2456976566504587708, guid: 7fdab41d93e58634e8fc312f6f0f2961, type: 3}
+  - usCoinPrefab: {fileID: 1359133956106809958, guid: b228aadb60f297c489ec85ffa9f52112, type: 3}
+  - europeCoinPrefab: {fileID: 9033556933168308469, guid: 07ec7a1581fe3ef4da087050d658643a, type: 3}
+  - spawnArea: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  - stageText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
