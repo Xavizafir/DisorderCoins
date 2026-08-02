@@ -28,9 +28,24 @@ public class GameManager : MonoBehaviour
     public int shuffleStartStage = 4; // mulai stage berapa posisi zona diacak
     public float zoneMoveDuration = 0.6f; // durasi animasi geser posisi zona
 
+    [Header("Bomb Coin (Decoy)")]
+    public List<GameObject> bombCoinPrefabs; // drag prefab koin PALSU (visual disguise) ke sini
+    public int bombStartStage = 5; // mulai stage berapa bomb coin muncul
+    public int bombCoinsPerStage = 1; // jumlah bomb coin tiap stage (mulai bombStartStage)
+
     [Header("UI (opsional, isi kalau sudah ada)")]
     public TMP_Text timerText;
     public TMP_Text stageText;
+
+    [Header("Freeze Feedback (opsional)")]
+    public GameObject freezeOverlay; // panel/UI apapun yang muncul pas input lagi freeze (misal tint merah + teks "FROZEN")
+
+    [Header("Screen Shake")]
+    public RectTransform screenShakeTarget; // drag Canvas (RectTransform) ke sini
+    public float shakeDuration = 0.4f;
+    public float shakeMagnitude = 25f; // seberapa jauh geser tiap frame (pixel)
+
+    public static bool IsInputFrozen = false; // dicek DraggableCoin & BombCoin buat block drag
 
     private int currentStage = 1;
     private float timeRemaining;
@@ -38,6 +53,7 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false;
 
     private List<DraggableCoin> activeCoins = new List<DraggableCoin>();
+    private List<GameObject> activeBombCoins = new List<GameObject>();
     private int correctCount = 0;
     private List<Vector2> zoneSlotPositions = new List<Vector2>(); // posisi asli tiap slot zona
 
@@ -78,8 +94,15 @@ public class GameManager : MonoBehaviour
             if (coin != null) Destroy(coin.gameObject);
         }
 
+        // Hapus bomb coin yang belum sempet di-resolve (misal player kelewat cepet lanjut stage)
+        foreach (GameObject bomb in activeBombCoins)
+        {
+            if (bomb != null) Destroy(bomb);
+        }
+
         correctCount = 0;
         activeCoins.Clear();
+        activeBombCoins.Clear();
 
         // Stage 1: mulai dari base time limit.
         // Stage selanjutnya: SISA waktu + bonus (bukan reset dari rumus)
@@ -167,6 +190,17 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenSpawns);
         }
 
+        // Bomb coin (decoy) mulai muncul di bombStartStage, di-spawn TAMBAHAN di luar koin asli
+        if (currentStage >= bombStartStage && bombCoinPrefabs != null && bombCoinPrefabs.Count > 0)
+        {
+            for (int i = 0; i < bombCoinsPerStage; i++)
+            {
+                GameObject bombPrefab = bombCoinPrefabs[Random.Range(0, bombCoinPrefabs.Count)];
+                SpawnBombCoin(bombPrefab);
+                yield return new WaitForSeconds(delayBetweenSpawns);
+            }
+        }
+
         isSpawning = false;
     }
 
@@ -184,6 +218,71 @@ public class GameManager : MonoBehaviour
 
         DraggableCoin coin = coinObj.GetComponent<DraggableCoin>();
         activeCoins.Add(coin);
+    }
+
+    void SpawnBombCoin(GameObject prefab)
+    {
+        GameObject bombObj = Instantiate(prefab, spawnArea);
+        RectTransform rt = bombObj.GetComponent<RectTransform>();
+
+        float margin = 40f;
+        float halfW = spawnArea.rect.width / 2f - margin;
+        float halfH = spawnArea.rect.height / 2f - margin;
+        Vector2 randomPos = new Vector2(Random.Range(-halfW, halfW), Random.Range(-halfH, halfH));
+        rt.anchoredPosition = randomPos;
+
+        // SENGAJA gak dimasukin ke activeCoins — bomb coin gak dihitung buat syarat lolos stage
+        activeBombCoins.Add(bombObj);
+    }
+
+    // Dipanggil dari BombCoin.cs pas meledak
+    public void FreezeInput(float duration)
+    {
+        StartCoroutine(FreezeInputRoutine(duration));
+    }
+
+    private IEnumerator FreezeInputRoutine(float duration)
+    {
+        IsInputFrozen = true;
+        if (freezeOverlay != null) freezeOverlay.SetActive(true);
+
+        yield return new WaitForSeconds(duration);
+
+        IsInputFrozen = false;
+        if (freezeOverlay != null) freezeOverlay.SetActive(false);
+    }
+
+    // Dipanggil dari BombCoin.cs pas meledak
+    public void ScreenShake()
+    {
+        if (screenShakeTarget != null)
+        {
+            StartCoroutine(ScreenShakeRoutine());
+        }
+    }
+
+    private IEnumerator ScreenShakeRoutine()
+    {
+        Vector2 originalPos = screenShakeTarget.anchoredPosition;
+        float t = 0f;
+
+        while (t < shakeDuration)
+        {
+            t += Time.deltaTime;
+            float progress = t / shakeDuration;
+
+            // Kekuatan shake makin ngecil seiring waktu, biar berhentinya smooth bukan mendadak
+            float currentMagnitude = Mathf.Lerp(shakeMagnitude, 0f, progress);
+            Vector2 offset = new Vector2(
+                Random.Range(-currentMagnitude, currentMagnitude),
+                Random.Range(-currentMagnitude, currentMagnitude)
+            );
+
+            screenShakeTarget.anchoredPosition = originalPos + offset;
+            yield return null;
+        }
+
+        screenShakeTarget.anchoredPosition = originalPos; // pastiin balik pas ke posisi awal
     }
 
     public void OnCoinPlacedCorrectly(DraggableCoin coin)

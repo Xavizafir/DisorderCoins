@@ -15,11 +15,16 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("Spawn Animation")]
     public float spawnAnimDuration = 0.25f; // durasi animasi pop-in
 
+    [Header("Drag Animation")]
+    public float dragScaleMultiplier = 1.15f; // seberapa besar koin membesar pas di-drag
+    public float dragScaleAnimDuration = 0.15f; // durasi animasi membesar/mengecil
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Canvas rootCanvas;
     private Vector2 originalAnchoredPos;
     private DropZone currentHoverZone; // zona yang lagi disorot pas drag
+    private Coroutine scaleCoroutine; // biar animasi lama ke-cancel kalau ada yang baru
 
     // Status ini yang dicek GameManager buat tau apakah semua koin udah benar
     public bool IsPlacedCorrectly { get; private set; } = false;
@@ -60,14 +65,44 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         return 1f + c3 * Mathf.Pow(x - 1f, 3) + c1 * Mathf.Pow(x - 1f, 2);
     }
 
+    // Animasi scale reusable — dipakai buat efek membesar/mengecil pas drag
+    private void ScaleTo(float targetScale, float duration)
+    {
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleAnimation(targetScale, duration));
+    }
+
+    private IEnumerator ScaleAnimation(float targetScale, float duration)
+    {
+        float startScale = rectTransform.localScale.x;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float progress = Mathf.Clamp01(t / duration);
+            float current = Mathf.Lerp(startScale, targetScale, progress);
+            rectTransform.localScale = Vector3.one * current;
+            yield return null;
+        }
+
+        rectTransform.localScale = Vector3.one * targetScale;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (GameManager.IsInputFrozen) return;
+
         originalAnchoredPos = rectTransform.anchoredPosition;
         canvasGroup.blocksRaycasts = false; // biar raycast pas drag bisa "tembus" ke zona di bawahnya
+
+        ScaleTo(dragScaleMultiplier, dragScaleAnimDuration);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (GameManager.IsInputFrozen) return;
+
         // Gerakin koin ikutin mouse/finger, disesuaikan scale canvas
         rectTransform.anchoredPosition += eventData.delta / rootCanvas.scaleFactor;
 
@@ -84,7 +119,11 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (GameManager.IsInputFrozen) return;
+
         canvasGroup.blocksRaycasts = true;
+
+        ScaleTo(1f, dragScaleAnimDuration);
 
         // Matiin highlight zona terakhir yang di-hover, apapun hasilnya (benar/salah)
         if (currentHoverZone != null)
