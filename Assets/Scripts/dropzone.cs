@@ -47,4 +47,34 @@ public class DropZone : MonoBehaviour
             image.color = originalColor;
         }
     }
+
+    // Dipanggil dari DraggableCoin.cs kalau snapPoint kosong.
+    // Koin TETAP di posisi drop-nya, tapi "didorong" secukupnya biar seluruh badannya
+    // gak nyembul keluar dari kotak zona ini (bukan ditarik ke 1 titik tengah).
+    public void ClampCoinInside(RectTransform coinRect)
+    {
+        RectTransform zoneRect = GetComponent<RectTransform>();
+
+        Vector3[] zoneCorners = new Vector3[4];
+        zoneRect.GetWorldCorners(zoneCorners); // [0]=kiri-bawah, [2]=kanan-atas
+
+        Vector3[] coinCorners = new Vector3[4];
+        coinRect.GetWorldCorners(coinCorners);
+        float coinHalfWidth = (coinCorners[2].x - coinCorners[0].x) / 2f;
+        float coinHalfHeight = (coinCorners[2].y - coinCorners[0].y) / 2f;
+
+        float minX = zoneCorners[0].x + coinHalfWidth;
+        float maxX = zoneCorners[2].x - coinHalfWidth;
+        float minY = zoneCorners[0].y + coinHalfHeight;
+        float maxY = zoneCorners[2].y - coinHalfHeight;
+
+        // Kalau koin lebih besar dari zonanya (jarang, tapi jaga-jaga), paksa ke tengah biar gak kebalik-balik
+        if (minX > maxX) { float mid = (minX + maxX) / 2f; minX = maxX = mid; }
+        if (minY > maxY) { float mid = (minY + maxY) / 2f; minY = maxY = mid; }
+
+        Vector3 pos = coinRect.position;
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        coinRect.position = pos;
+    }
 }

@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     public float timeBonusPerStage = 10f;
     public float totalSpawnDuration = 2.5f; // semua koin harus muncul dalam durasi ini
 
+    [Header("Zone Shuffle")]
+    public List<DropZone> zones; // drag IndoPlace, ChinaPlace, USPlace, EuropePlace ke sini
+    public int shuffleStartStage = 4; // mulai stage berapa posisi zona diacak
+    public float zoneMoveDuration = 0.6f; // durasi animasi geser posisi zona
+
     [Header("UI (opsional, isi kalau sudah ada)")]
     public TMP_Text timerText;
     public TMP_Text stageText;
@@ -34,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private List<DraggableCoin> activeCoins = new List<DraggableCoin>();
     private int correctCount = 0;
+    private List<Vector2> zoneSlotPositions = new List<Vector2>(); // posisi asli tiap slot zona
 
     void Awake()
     {
@@ -42,6 +48,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Simpen posisi asli tiap zona sebagai "slot" yang nanti bakal ditukar-tukar
+        foreach (DropZone zone in zones)
+        {
+            zoneSlotPositions.Add(zone.GetComponent<RectTransform>().anchoredPosition);
+        }
+
         StartStage();
     }
 
@@ -82,7 +94,54 @@ public class GameManager : MonoBehaviour
 
         if (stageText != null) stageText.text = "Stage " + currentStage;
 
+        // Mulai stage 4 (bisa diatur), posisi zona diacak ulang tiap stage
+        if (currentStage >= shuffleStartStage)
+        {
+            ShuffleZonePositions();
+        }
+
         StartCoroutine(SpawnCoinsRoutine());
+    }
+
+    void ShuffleZonePositions()
+    {
+        // Kocok urutan posisi slot
+        List<Vector2> shuffledSlots = new List<Vector2>(zoneSlotPositions);
+        for (int i = shuffledSlots.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (shuffledSlots[i], shuffledSlots[j]) = (shuffledSlots[j], shuffledSlots[i]);
+        }
+
+        // Pasang tiap zona ke posisi slot hasil kocokan, dengan animasi geser (bukan instant)
+        for (int i = 0; i < zones.Count; i++)
+        {
+            RectTransform zoneRect = zones[i].GetComponent<RectTransform>();
+            StartCoroutine(MoveZoneSmooth(zoneRect, shuffledSlots[i], zoneMoveDuration));
+        }
+    }
+
+    IEnumerator MoveZoneSmooth(RectTransform zoneRect, Vector2 targetPos, float duration)
+    {
+        Vector2 startPos = zoneRect.anchoredPosition;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float progress = Mathf.Clamp01(t / duration);
+            float eased = EaseInOutQuad(progress);
+            zoneRect.anchoredPosition = Vector2.Lerp(startPos, targetPos, eased);
+            yield return null;
+        }
+
+        zoneRect.anchoredPosition = targetPos; // pastiin pas di posisi akhir
+    }
+
+    // Easing halus: pelan di awal, cepat di tengah, pelan lagi di akhir
+    private float EaseInOutQuad(float x)
+    {
+        return x < 0.5f ? 2f * x * x : 1f - Mathf.Pow(-2f * x + 2f, 2) / 2f;
     }
 
     IEnumerator SpawnCoinsRoutine()

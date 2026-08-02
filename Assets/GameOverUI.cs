@@ -44,8 +44,8 @@ public class GameOverUI : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        if (scoreText != null) scoreText.text = "Score: " + score;
-        if (highScoreText != null) highScoreText.text = "High Score: " + highScore;
+        if (scoreText != null) scoreText.text = "Stage: " + score;
+        if (highScoreText != null) highScoreText.text = "High Stage: " + highScore;
 
         panelCanvasGroup.gameObject.SetActive(true);
         StartCoroutine(FadeIn());

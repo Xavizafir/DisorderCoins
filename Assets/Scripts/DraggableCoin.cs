@@ -97,9 +97,17 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (targetZone != null && targetZone.IsCorrectCoin(coinType))
         {
-            // Benar: snap ke titik zona (kalau ada) dan lock
             if (targetZone.snapPoint != null)
+            {
+                // Ada snap point yang di-set manual: koin ketarik pas ke situ
                 rectTransform.position = targetZone.snapPoint.position;
+            }
+            else
+            {
+                // Gak ada snap point: koin tetap di posisi drop-nya,
+                // cuma didorong secukupnya biar gak nyembul keluar kotak zona
+                targetZone.ClampCoinInside(rectTransform);
+            }
 
             // Cuma hitung sekali — cegah double-count kalau koin yang UDAH benar di-drag ulang
             if (!IsPlacedCorrectly)
