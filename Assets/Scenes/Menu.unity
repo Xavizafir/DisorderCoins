@@ -494,62 +494,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1222689161
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1222689163}
-  - component: {fileID: 1222689162}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1222689162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222689161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266534d1a1d827f47b600497277cc1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  indoCoinPrefab: {fileID: 8913314088454311300, guid: c44b3e4d27ea74a4eb0077a4d6e86cf0, type: 3}
-  chinaCoinPrefab: {fileID: 2456976566504587708, guid: 7fdab41d93e58634e8fc312f6f0f2961, type: 3}
-  usCoinPrefab: {fileID: 1359133956106809958, guid: b228aadb60f297c489ec85ffa9f52112, type: 3}
-  europeCoinPrefab: {fileID: 9033556933168308469, guid: 07ec7a1581fe3ef4da087050d658643a, type: 3}
-  spawnArea: {fileID: 0}
-  baseTotalCoins: 4
-  coinsIncrementPerStage: 1
-  baseTimeLimit: 15
-  timeBonusPerStage: 10
-  totalSpawnDuration: 2.5
-  timerText: {fileID: 0}
-  stageText: {fileID: 0}
---- !u!4 &1222689163
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222689161}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.20719, y: 0.38477, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270985418
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +749,7 @@ GameObject:
   - component: {fileID: 1354248051}
   - component: {fileID: 1354248050}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +926,7 @@ GameObject:
   - component: {fileID: 1560282004}
   - component: {fileID: 1560282003}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,6 +1191,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 709620851}
-  - {fileID: 1222689163}
   - {fileID: 1308168367}
   - {fileID: 1512032153}
