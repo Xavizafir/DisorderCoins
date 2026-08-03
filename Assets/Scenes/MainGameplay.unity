@@ -2696,7 +2696,7 @@ MonoBehaviour:
   flashExplodeSound: {fileID: 0}
   baseTotalCoins: 4
   coinsIncrementPerStage: 1
-  baseTimeLimit: 10
+  baseTimeLimit: 15
   timeBonusPerStage: 10
   totalSpawnDuration: 1
   zones:
@@ -2711,20 +2711,20 @@ MonoBehaviour:
   - {fileID: 2456976566504587708, guid: 1a0a9b63c5f64b14981113aa9f04df9c, type: 3}
   - {fileID: 1359133956106809958, guid: f927611c58bf1504fb6a37a39499b3e7, type: 3}
   - {fileID: 9033556933168308469, guid: 5c3d2336f1af4a64b863a14ad2a96c6c, type: 3}
-  bombStartStage: 1
+  bombStartStage: 3
   bombCoinsPerStage: 1
   flashCoinPrefabs:
   - {fileID: 8913314088454311300, guid: f00e66c55e32f7b499ff575baa177b90, type: 3}
   - {fileID: 2456976566504587708, guid: f07034432ba58284486591cb84931e50, type: 3}
   - {fileID: 1359133956106809958, guid: 0a11745aa79b227459a33f2c46060cd8, type: 3}
   - {fileID: 9033556933168308469, guid: da9041c4779d27746b680b4d908fe3c0, type: 3}
-  flashStartStage: 1
-  flashCoinsPerStage: 2
+  flashStartStage: 3
+  flashCoinsPerStage: 1
   flashOverlayImage: {fileID: 584300996}
-  flashDuration: 2.5
+  flashDuration: 4
   timerText: {fileID: 246859462}
   stageText: {fileID: 1118866062}
-  warningText: {fileID: 1401286800}
+  warningText: {fileID: 0}
   freezeOverlay: {fileID: 753706938}
   screenShakeTarget: {fileID: 1478596657}
   shakeDuration: 0.4
