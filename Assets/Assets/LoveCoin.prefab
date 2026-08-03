@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6824619459865364678}
   - component: {fileID: 9132729938508270862}
   - component: {fileID: 1711859322608413885}
+  - component: {fileID: 8963454503748931806}
   - component: {fileID: 7131677922664657327}
-  - component: {fileID: 2049704374994945210}
   m_Layer: 5
-  m_Name: USBombCoin
+  m_Name: LoveCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.24316263, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 3499367678399124951, guid: 54e0a528d786e7b4a96e85f923f7f596, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,6 +77,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8963454503748931806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359133956106809958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c26f8c6f6a2fa4198ca231b5e5da1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DraggableCoin
+  coinType: 2
+  spawnAnimDuration: 0.25
+  dragScaleMultiplier: 1.15
+  dragScaleAnimDuration: 0.15
 --- !u!225 &7131677922664657327
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -89,20 +105,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2049704374994945210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5419ffcd9dcd644eb6945100efc4ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BombCoin
-  armDuration: 2
-  freezeDuration: 5
-  maxScaleMultiplier: 1.6
-  maxShakeStrength: 12
-  explodeColor: {r: 1, g: 0, b: 0, a: 1}

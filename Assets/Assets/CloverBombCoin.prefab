@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9033556933168308469
+--- !u!1 &8913314088454311300
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3315357187208593291}
-  - component: {fileID: 5149766942463455660}
-  - component: {fileID: 6571783809566122244}
-  - component: {fileID: 2524709586886153882}
-  - component: {fileID: 4779505395282441011}
+  - component: {fileID: 4670820826818623005}
+  - component: {fileID: 7548305784468322671}
+  - component: {fileID: 1978938972405690927}
+  - component: {fileID: 3233451529289724726}
+  - component: {fileID: 1005843180631523414}
   m_Layer: 5
-  m_Name: EuropeFlashCoin
+  m_Name: CloverBombCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3315357187208593291
+--- !u!224 &4670820826818623005
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033556933168308469}
+  m_GameObject: {fileID: 8913314088454311300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,38 +36,38 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 697}
+  m_AnchoredPosition: {x: -112.81909, y: 697}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5149766942463455660
+--- !u!222 &7548305784468322671
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033556933168308469}
+  m_GameObject: {fileID: 8913314088454311300}
   m_CullTransparentMesh: 1
---- !u!114 &6571783809566122244
+--- !u!114 &1978938972405690927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033556933168308469}
+  m_GameObject: {fileID: 8913314088454311300}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99017096, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 2946962427569901173, guid: bd132a55feb119e4db02f8fefacb6623, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,30 +77,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &2524709586886153882
+--- !u!225 &3233451529289724726
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033556933168308469}
+  m_GameObject: {fileID: 8913314088454311300}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &4779505395282441011
+--- !u!114 &1005843180631523414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033556933168308469}
+  m_GameObject: {fileID: 8913314088454311300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9901ca619dd18049955395992ecec77, type: 3}
+  m_Script: {fileID: 11500000, guid: a5419ffcd9dcd644eb6945100efc4ff2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlashCoin
-  flashDelay: 1.5
-  maxScaleMultiplier: 1.5
-  maxShakeStrength: 10
+  m_EditorClassIdentifier: Assembly-CSharp::BombCoin
+  armDuration: 2
+  freezeDuration: 5
+  maxScaleMultiplier: 1.6
+  maxShakeStrength: 12
+  explodeColor: {r: 1, g: 0, b: 0, a: 1}

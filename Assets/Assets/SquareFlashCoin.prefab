@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1359133956106809958
+--- !u!1 &2456976566504587708
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6824619459865364678}
-  - component: {fileID: 9132729938508270862}
-  - component: {fileID: 1711859322608413885}
-  - component: {fileID: 8963454503748931806}
-  - component: {fileID: 7131677922664657327}
+  - component: {fileID: 1269400174232017801}
+  - component: {fileID: 8930601537357929192}
+  - component: {fileID: 6314556041657885037}
+  - component: {fileID: 5999269925801044218}
+  - component: {fileID: 1988979276944824630}
   m_Layer: 5
-  m_Name: USCoin
+  m_Name: SquareFlashCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &6824619459865364678
+--- !u!224 &1269400174232017801
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
+  m_GameObject: {fileID: 2456976566504587708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -36,24 +36,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 239, y: 697}
+  m_AnchoredPosition: {x: 6, y: 697}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &9132729938508270862
+--- !u!222 &8930601537357929192
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
+  m_GameObject: {fileID: 2456976566504587708}
   m_CullTransparentMesh: 1
---- !u!114 &1711859322608413885
+--- !u!114 &6314556041657885037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
+  m_GameObject: {fileID: 2456976566504587708}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3499367678399124951, guid: 54e0a528d786e7b4a96e85f923f7f596, type: 3}
+  m_Sprite: {fileID: -6141609995383282308, guid: e1d1eefc1506b5047abbd7c1d800748f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,31 +77,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8963454503748931806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c26f8c6f6a2fa4198ca231b5e5da1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DraggableCoin
-  coinType: 2
-  spawnAnimDuration: 0.25
-  dragScaleMultiplier: 1.15
-  dragScaleAnimDuration: 0.15
---- !u!225 &7131677922664657327
+--- !u!225 &5999269925801044218
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359133956106809958}
+  m_GameObject: {fileID: 2456976566504587708}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1988979276944824630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2456976566504587708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9901ca619dd18049955395992ecec77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashCoin
+  armDuration: 2
+  maxScaleMultiplier: 1.5
+  maxShakeStrength: 8
+  flashColor: {r: 1, g: 0.7690869, b: 0.2295596, a: 1}
+  flashSpeed: 15

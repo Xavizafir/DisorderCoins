@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1498630023807221242}
   - component: {fileID: 5999269925801044218}
   m_Layer: 5
-  m_Name: ChinaCoin
+  m_Name: SquareCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

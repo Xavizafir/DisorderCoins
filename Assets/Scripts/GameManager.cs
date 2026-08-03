@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -32,6 +31,9 @@ public class GameManager : MonoBehaviour
     public float timeBonusPerStage = 10f;
     public float totalSpawnDuration = 2.5f; // semua koin harus muncul dalam durasi ini
 
+    [Header("Scoring")]
+    public int pointsPerCorrectPlacement = 10; // nambah tiap kali koin ditaruh BENAR
+
     [Header("Zone Shuffle")]
     public List<DropZone> zones; // drag IndoPlace, ChinaPlace, USPlace, EuropePlace ke sini
     public int shuffleStartStage = 4; // mulai stage berapa posisi zona diacak
@@ -42,7 +44,6 @@ public class GameManager : MonoBehaviour
     public int bombStartStage = 3; // mulai stage berapa bomb coin muncul
     public int bombCoinsPerStage = 1; // jumlah bomb coin tiap stage (mulai bombStartStage)
 
-    // --- BARU: Flash Coin Settings ---
     [Header("Flash Coin Settings")]
     public List<GameObject> flashCoinPrefabs; // drag prefab koin flash di sini
     public int flashStartStage = 6;           // mulai muncul di stage 6
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
     [Header("UI (opsional, isi kalau sudah ada)")]
     public TMP_Text timerText;
     public TMP_Text stageText;
-    public TMP_Text warningText;              // Teks peringatan stage (misal: "Jenis Bomb Baru Ditambahkan!")
+    public TMP_Text scoreText;
 
     [Header("Freeze Feedback (opsional)")]
     public GameObject freezeOverlay; // panel/UI apapun yang muncul pas input lagi freeze (misal tint merah + teks "FROZEN")
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
     public static bool IsInputFrozen = false; // dicek DraggableCoin & BombCoin buat block drag
 
     private int currentStage = 1;
+    private int score = 0;
     private float timeRemaining;
     private bool isSpawning = false;
     private bool isGameOver = false;
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
             zoneSlotPositions.Add(zone.GetComponent<RectTransform>().anchoredPosition);
         }
 
+        UpdateScoreDisplay();
         StartStage();
     }
 
@@ -138,38 +141,16 @@ public class GameManager : MonoBehaviour
             ShuffleZonePositions();
         }
 
-        // Tampilkan teks peringatan di awal Stage 6 (flashStartStage)
-        if (currentStage == flashStartStage)
-        {
-            StartCoroutine(StartStageWithWarningRoutine("Jenis Bomb Baru Ditambahkan!"));
-        }
-        else
-        {
-            StartCoroutine(SpawnCoinsRoutine());
-        }
-    }
-
-    private IEnumerator StartStageWithWarningRoutine(string message)
-    {
-        if (warningText != null)
-        {
-            warningText.text = message;
-            warningText.gameObject.SetActive(true);
-            yield return new WaitForSeconds(2.0f); // Teks muncul 2 detik
-            warningText.gameObject.SetActive(false);
-        }
-
-        // Panggil spawn koin setelah teks selesai muncul
         StartCoroutine(SpawnCoinsRoutine());
     }
 
     void ShuffleZonePositions()
     {
-        // --- TAMBAHAN SOUND EFFECT SWAP ZONA ---
         if (audioSource != null && zoneShuffleSound != null)
         {
             audioSource.PlayOneShot(zoneShuffleSound);
         }
+
         // Kocok urutan posisi slot
         List<Vector2> shuffledSlots = new List<Vector2>(zoneSlotPositions);
         for (int i = shuffledSlots.Count - 1; i > 0; i--)
@@ -209,13 +190,13 @@ public class GameManager : MonoBehaviour
         return x < 0.5f ? 2f * x * x : 1f - Mathf.Pow(-2f * x + 2f, 2) / 2f;
     }
 
-    // Struct kecil buat nampung 1 slot spawn: prefab-nya apa, dan apakah dia bomb atau koin asli
+    // Struct kecil buat nampung 1 slot spawn: prefab-nya apa, dan apakah dia bomb/flash/koin asli
     [System.Serializable]
     public struct SpawnItem
     {
         public GameObject prefab;
         public bool isBomb;
-        public bool isFlash; // <-- Diganti jadi isFlash
+        public bool isFlash;
     }
 
     IEnumerator SpawnCoinsRoutine()
@@ -242,12 +223,12 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 3. Flash Coin (SUDAH DIPERBAIKI: Mengambil dari flashCoinPrefabs)
+        // 3. Flash Coin
         if (currentStage >= flashStartStage && flashCoinPrefabs != null && flashCoinPrefabs.Count > 0)
         {
             for (int i = 0; i < flashCoinsPerStage; i++)
             {
-                GameObject flashPrefab = flashCoinPrefabs[Random.Range(0, flashCoinPrefabs.Count)]; // <-- Dibenarkan di sini
+                GameObject flashPrefab = flashCoinPrefabs[Random.Range(0, flashCoinPrefabs.Count)];
                 spawnQueue.Add(new SpawnItem { prefab = flashPrefab, isBomb = false, isFlash = true });
             }
         }
@@ -261,22 +242,21 @@ public class GameManager : MonoBehaviour
 
         float delayBetweenSpawns = totalSpawnDuration / spawnQueue.Count;
 
-        // Process Spawning (SUDAH DIPERBAIKI: Ada pengecekan isFlash)
         foreach (SpawnItem item in spawnQueue)
         {
             if (item.isFlash)
             {
-                Debug.Log("<color=yellow>[SPAWN] Flash Coin Muncul!</color>");
+                Debug.Log("[SPAWN] Flash Coin Muncul!");
                 SpawnBombCoin(item.prefab);
             }
             else if (item.isBomb)
             {
-                Debug.Log("<color=red>[SPAWN] Bomb Coin Muncul!</color>");
+                Debug.Log("[SPAWN] Bomb Coin Muncul!");
                 SpawnBombCoin(item.prefab);
             }
             else
             {
-                Debug.Log("<color=cyan>[SPAWN] Koin Normal Muncul</color>");
+                Debug.Log("[SPAWN] Koin Normal Muncul");
                 SpawnCoin(item.prefab);
             }
 
@@ -459,10 +439,18 @@ public class GameManager : MonoBehaviour
         screenShakeTarget.localRotation = originalRotation;
         screenShakeTarget.localScale = originalScale;
     }
+
     public void OnCoinPlacedCorrectly(DraggableCoin coin)
     {
         correctCount++;
+        score += pointsPerCorrectPlacement;
+        UpdateScoreDisplay();
         CheckStageComplete();
+    }
+
+    private void UpdateScoreDisplay()
+    {
+        if (scoreText != null) scoreText.text = "Score: " + score;
     }
 
     public void OnCoinRemovedFromCorrectPlace(DraggableCoin coin)
@@ -486,11 +474,11 @@ public class GameManager : MonoBehaviour
 
         if (GameOverUI.Instance != null)
         {
-            GameOverUI.Instance.ShowGameOver(currentStage);
+            GameOverUI.Instance.ShowGameOver(currentStage, score);
         }
         else
         {
-            Debug.LogWarning("GameOverUI belum ke-setup di scene! Score: " + currentStage);
+            Debug.LogWarning("GameOverUI belum ke-setup di scene! Stage: " + currentStage + " Score: " + score);
         }
     }
 }

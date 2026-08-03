@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -14,11 +15,18 @@ public class GameOverUI : MonoBehaviour
     public float fadeDuration = 0.5f;
 
     [Header("Texts")]
+    public TMP_Text stageText;
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
 
     [Header("Scene Navigation")]
     public string menuSceneName = "Menu"; // sesuaikan sama nama scene menu lo
+
+    [Header("Background Blur")]
+    public RawImage blurBackgroundImage; // RawImage full-screen, taruh sebagai child PALING ATAS di dalam panel (biar di-render paling belakang)
+    public Camera captureCamera;         // biasanya Main Camera
+    public Material blurMaterial;        // material pakai shader Custom/SimpleBoxBlur
+    public int blurIterations = 3;       // makin banyak makin blur, tapi makin berat
 
     private const string HighScoreKey = "DisorderCoins_HighScore";
 
@@ -34,7 +42,7 @@ public class GameOverUI : MonoBehaviour
     }
 
     // Dipanggil dari GameManager.cs pas waktu abis
-    public void ShowGameOver(int score)
+    public void ShowGameOver(int stage, int score)
     {
         int highScore = PlayerPrefs.GetInt(HighScoreKey, 0);
         if (score > highScore)
@@ -44,11 +52,56 @@ public class GameOverUI : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        if (scoreText != null) scoreText.text = "Stage: " + score;
-        if (highScoreText != null) highScoreText.text = "High Stage: " + highScore;
+        if (stageText != null) stageText.text = "Stage: " + stage;
+        if (scoreText != null) scoreText.text = "Score: " + score;
+        if (highScoreText != null) highScoreText.text = "High Score: " + highScore;
+
+        // PENTING: capture dulu SEBELUM panel diaktifin, biar screenshot-nya
+        // cuma nangkep gameplay di belakang, bukan panel yang mau ditampilin.
+        // blurBackgroundImage sekarang OBJEK TERPISAH (bukan child GameOverPanel),
+        // jadi harus diaktifin manual di sini.
+        if (blurBackgroundImage != null && captureCamera != null && blurMaterial != null)
+        {
+            Texture2D blurredTexture = CaptureAndBlur();
+            blurBackgroundImage.texture = blurredTexture;
+            blurBackgroundImage.gameObject.SetActive(true);
+        }
 
         panelCanvasGroup.gameObject.SetActive(true);
         StartCoroutine(FadeIn());
+    }
+
+    private Texture2D CaptureAndBlur()
+    {
+        int width = Screen.width;
+        int height = Screen.height;
+
+        // 1. Render tampilan sekarang ke RenderTexture
+        RenderTexture rt = RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.ARGB32);
+        RenderTexture prevTarget = captureCamera.targetTexture;
+        captureCamera.targetTexture = rt;
+        captureCamera.Render();
+        captureCamera.targetTexture = prevTarget;
+
+        // 2. Blur berkali-kali (makin banyak iterasi, makin halus blur-nya)
+        RenderTexture current = rt;
+        for (int i = 0; i < blurIterations; i++)
+        {
+            RenderTexture next = RenderTexture.GetTemporary(width, height, 0, RenderTextureFormat.ARGB32);
+            Graphics.Blit(current, next, blurMaterial);
+            RenderTexture.ReleaseTemporary(current);
+            current = next;
+        }
+
+        // 3. Baca hasilnya jadi Texture2D biasa
+        RenderTexture.active = current;
+        Texture2D result = new Texture2D(width, height, TextureFormat.RGB24, false);
+        result.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        result.Apply();
+        RenderTexture.active = null;
+
+        RenderTexture.ReleaseTemporary(current);
+        return result;
     }
 
     private IEnumerator FadeIn()

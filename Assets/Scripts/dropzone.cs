@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 // Tempel script ini di tiap GameObject "Place" (IndoPlace, ChinaPlace, USPlace, EuropePlace)
 // Set "Zone Type" di Inspector sesuai jenis zonanya.
@@ -12,16 +13,18 @@ public class DropZone : MonoBehaviour
     [Header("Snap Settings")]
     public RectTransform snapPoint; // opsional: kalau mau koin snap ke titik tengah zona, drag RectTransform zona ini ke sini
 
-    [Header("Highlight Settings")]
-    public float highlightBrightness = 1.5f; // seberapa terang pas koin di-hover di atas zona ini
+    [Header("Highlight Settings (Scale Pop)")]
+    public float highlightScaleMultiplier = 1.1f; // seberapa besar zona membesar pas koin di-drag di atasnya
+    public float highlightAnimDuration = 0.15f;   // durasi animasi membesar/mengecil
 
-    private Image image;
-    private Color originalColor;
+    private RectTransform rectTransform;
+    private Vector3 baseScale;
+    private Coroutine scaleCoroutine;
 
     void Awake()
     {
-        image = GetComponent<Image>();
-        originalColor = image.color;
+        rectTransform = GetComponent<RectTransform>();
+        baseScale = rectTransform.localScale;
     }
 
     // Dipanggil dari DraggableCoin.cs pas koin di-drop di sini
@@ -30,22 +33,34 @@ public class DropZone : MonoBehaviour
         return coinType == zoneType;
     }
 
-    // Nyalain warna lebih terang, dipanggil DraggableCoin pas koin lagi di-drag di atas zona ini
+    // Bikin zona membesar dikit (pop) pas koin lagi di-drag di atasnya, balik normal pas gak lagi
     public void SetHighlight(bool highlighted)
     {
-        if (highlighted)
+        float target = highlighted ? highlightScaleMultiplier : 1f;
+        ScaleTo(target, highlightAnimDuration);
+    }
+
+    private void ScaleTo(float targetScale, float duration)
+    {
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
+        scaleCoroutine = StartCoroutine(ScaleAnimation(targetScale, duration));
+    }
+
+    private IEnumerator ScaleAnimation(float targetScale, float duration)
+    {
+        float startScale = rectTransform.localScale.x / baseScale.x;
+        float t = 0f;
+
+        while (t < duration)
         {
-            image.color = new Color(
-                Mathf.Min(originalColor.r * highlightBrightness, 1f),
-                Mathf.Min(originalColor.g * highlightBrightness, 1f),
-                Mathf.Min(originalColor.b * highlightBrightness, 1f),
-                originalColor.a
-            );
+            t += Time.deltaTime;
+            float progress = Mathf.Clamp01(t / duration);
+            float current = Mathf.Lerp(startScale, targetScale, progress);
+            rectTransform.localScale = baseScale * current;
+            yield return null;
         }
-        else
-        {
-            image.color = originalColor;
-        }
+
+        rectTransform.localScale = baseScale * targetScale;
     }
 
     // Dipanggil dari DraggableCoin.cs kalau snapPoint kosong.
