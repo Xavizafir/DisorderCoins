@@ -2854,10 +2854,10 @@ MonoBehaviour:
   europeCoinPrefab: {fileID: 371718319}
   spawnArea: {fileID: 57897141}
   sfxAudioSource: {fileID: 1792041486}
-  popOutSound: {fileID: 8300000, guid: 10d1ecfbaad9d1d4c9d5d43b5182c7a6, type: 3}
+  popOutSound: {fileID: 0}
   coinDropSound: {fileID: 8300000, guid: f32439eb22fd157419fb58f0e8309cff, type: 3}
   zoneShuffleSound: {fileID: 8300000, guid: 667eb7338aa9cc94caab7e9b7e780065, type: 3}
-  flashExplodeSound: {fileID: 0}
+  flashExplodeSound: {fileID: 8300000, guid: 114eacdfb16ca5f42909fe5d81587eee, type: 3}
   buttonClickSound: {fileID: 8300000, guid: 43480dbea03c9bb44a89163abf590750, type: 3}
   baseTotalCoins: 4
   coinsIncrementPerStage: 1
