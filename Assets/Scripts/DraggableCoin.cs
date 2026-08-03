@@ -154,7 +154,12 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 IsPlacedCorrectly = true;
                 GameManager.Instance.OnCoinPlacedCorrectly(this);
             }
-        }
+
+            if (GameManager.Instance.audioSource != null && GameManager.Instance.coinDropSound != null)
+            {
+                GameManager.Instance.audioSource.PlayOneShot(GameManager.Instance.coinDropSound);
+            }
+    }
         else
         {
             // Salah taruh (atau di-drop di area kosong): koin TETAP di posisi drop terakhir,

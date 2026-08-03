@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Spawn Area")]
     public RectTransform spawnArea; // drag kotak gelap (area tengah) ke sini
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip popOutSound;
+    public AudioClip coinDropSound; // disimpan di sini agar mudah diakses dari DraggableCoin
+    public AudioClip zoneShuffleSound; //buat zona coin geser
+    public AudioClip flashExplodeSound;
 
     [Header("Stage Settings")]
     public int baseTotalCoins = 4;     // total semua koin di stage 1 (gabungan semua jenis)
@@ -30,12 +39,21 @@ public class GameManager : MonoBehaviour
 
     [Header("Bomb Coin (Decoy)")]
     public List<GameObject> bombCoinPrefabs; // drag prefab koin PALSU (visual disguise) ke sini
-    public int bombStartStage = 5; // mulai stage berapa bomb coin muncul
+    public int bombStartStage = 3; // mulai stage berapa bomb coin muncul
     public int bombCoinsPerStage = 1; // jumlah bomb coin tiap stage (mulai bombStartStage)
+
+    // --- BARU: Flash Coin Settings ---
+    [Header("Flash Coin Settings")]
+    public List<GameObject> flashCoinPrefabs; // drag prefab koin flash di sini
+    public int flashStartStage = 6;           // mulai muncul di stage 6
+    public int flashCoinsPerStage = 2;
+    public UnityEngine.UI.Image flashOverlayImage;          // Panel UI warna putih penuh
+    public float flashDuration = 2.5f;
 
     [Header("UI (opsional, isi kalau sudah ada)")]
     public TMP_Text timerText;
     public TMP_Text stageText;
+    public TMP_Text warningText;              // Teks peringatan stage (misal: "Jenis Bomb Baru Ditambahkan!")
 
     [Header("Freeze Feedback (opsional)")]
     public GameObject freezeOverlay; // panel/UI apapun yang muncul pas input lagi freeze (misal tint merah + teks "FROZEN")
@@ -94,7 +112,7 @@ public class GameManager : MonoBehaviour
             if (coin != null) Destroy(coin.gameObject);
         }
 
-        // Hapus bomb coin yang belum sempet di-resolve (misal player kelewat cepet lanjut stage)
+        // Hapus bomb coin yang belum sempet di-resolve
         foreach (GameObject bomb in activeBombCoins)
         {
             if (bomb != null) Destroy(bomb);
@@ -104,8 +122,6 @@ public class GameManager : MonoBehaviour
         activeCoins.Clear();
         activeBombCoins.Clear();
 
-        // Stage 1: mulai dari base time limit.
-        // Stage selanjutnya: SISA waktu + bonus (bukan reset dari rumus)
         if (currentStage == 1)
         {
             timeRemaining = baseTimeLimit;
@@ -117,17 +133,43 @@ public class GameManager : MonoBehaviour
 
         if (stageText != null) stageText.text = "Stage " + currentStage;
 
-        // Mulai stage 4 (bisa diatur), posisi zona diacak ulang tiap stage
         if (currentStage >= shuffleStartStage)
         {
             ShuffleZonePositions();
         }
 
+        // Tampilkan teks peringatan di awal Stage 6 (flashStartStage)
+        if (currentStage == flashStartStage)
+        {
+            StartCoroutine(StartStageWithWarningRoutine("Jenis Bomb Baru Ditambahkan!"));
+        }
+        else
+        {
+            StartCoroutine(SpawnCoinsRoutine());
+        }
+    }
+
+    private IEnumerator StartStageWithWarningRoutine(string message)
+    {
+        if (warningText != null)
+        {
+            warningText.text = message;
+            warningText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2.0f); // Teks muncul 2 detik
+            warningText.gameObject.SetActive(false);
+        }
+
+        // Panggil spawn koin setelah teks selesai muncul
         StartCoroutine(SpawnCoinsRoutine());
     }
 
     void ShuffleZonePositions()
     {
+        // --- TAMBAHAN SOUND EFFECT SWAP ZONA ---
+        if (audioSource != null && zoneShuffleSound != null)
+        {
+            audioSource.PlayOneShot(zoneShuffleSound);
+        }
         // Kocok urutan posisi slot
         List<Vector2> shuffledSlots = new List<Vector2>(zoneSlotPositions);
         for (int i = shuffledSlots.Count - 1; i > 0; i--)
@@ -168,10 +210,12 @@ public class GameManager : MonoBehaviour
     }
 
     // Struct kecil buat nampung 1 slot spawn: prefab-nya apa, dan apakah dia bomb atau koin asli
-    private struct SpawnItem
+    [System.Serializable]
+    public struct SpawnItem
     {
         public GameObject prefab;
         public bool isBomb;
+        public bool isFlash; // <-- Diganti jadi isFlash
     }
 
     IEnumerator SpawnCoinsRoutine()
@@ -182,25 +226,33 @@ public class GameManager : MonoBehaviour
         List<GameObject> allPrefabs = new List<GameObject> { indoCoinPrefab, chinaCoinPrefab, usCoinPrefab, europeCoinPrefab };
         List<SpawnItem> spawnQueue = new List<SpawnItem>();
 
-        // Tiap slot dipilih random dari 4 jenis, jadi komposisinya bisa timpang
-        // (misal 3 biru 1 kuning, atau 4-4-nya jenis yang sama)
+        // 1. Koin Normal
         for (int i = 0; i < totalCoins; i++)
         {
-            spawnQueue.Add(new SpawnItem { prefab = allPrefabs[Random.Range(0, allPrefabs.Count)], isBomb = false });
+            spawnQueue.Add(new SpawnItem { prefab = allPrefabs[Random.Range(0, allPrefabs.Count)], isBomb = false, isFlash = false });
         }
 
-        // Bomb coin (decoy) mulai muncul di bombStartStage — dimasukin ke queue YANG SAMA,
-        // biar posisi munculnya ke-acak juga, bukan selalu di paling akhir
+        // 2. Bomb Coin
         if (currentStage >= bombStartStage && bombCoinPrefabs != null && bombCoinPrefabs.Count > 0)
         {
             for (int i = 0; i < bombCoinsPerStage; i++)
             {
                 GameObject bombPrefab = bombCoinPrefabs[Random.Range(0, bombCoinPrefabs.Count)];
-                spawnQueue.Add(new SpawnItem { prefab = bombPrefab, isBomb = true });
+                spawnQueue.Add(new SpawnItem { prefab = bombPrefab, isBomb = true, isFlash = false });
             }
         }
 
-        // Kocok urutan seluruh queue (koin asli + bomb tercampur acak)
+        // 3. Flash Coin (SUDAH DIPERBAIKI: Mengambil dari flashCoinPrefabs)
+        if (currentStage >= flashStartStage && flashCoinPrefabs != null && flashCoinPrefabs.Count > 0)
+        {
+            for (int i = 0; i < flashCoinsPerStage; i++)
+            {
+                GameObject flashPrefab = flashCoinPrefabs[Random.Range(0, flashCoinPrefabs.Count)]; // <-- Dibenarkan di sini
+                spawnQueue.Add(new SpawnItem { prefab = flashPrefab, isBomb = false, isFlash = true });
+            }
+        }
+
+        // Kocok urutan seluruh queue
         for (int i = spawnQueue.Count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
@@ -209,12 +261,24 @@ public class GameManager : MonoBehaviour
 
         float delayBetweenSpawns = totalSpawnDuration / spawnQueue.Count;
 
+        // Process Spawning (SUDAH DIPERBAIKI: Ada pengecekan isFlash)
         foreach (SpawnItem item in spawnQueue)
         {
-            if (item.isBomb)
+            if (item.isFlash)
+            {
+                Debug.Log("<color=yellow>[SPAWN] Flash Coin Muncul!</color>");
                 SpawnBombCoin(item.prefab);
+            }
+            else if (item.isBomb)
+            {
+                Debug.Log("<color=red>[SPAWN] Bomb Coin Muncul!</color>");
+                SpawnBombCoin(item.prefab);
+            }
             else
+            {
+                Debug.Log("<color=cyan>[SPAWN] Koin Normal Muncul</color>");
                 SpawnCoin(item.prefab);
+            }
 
             yield return new WaitForSeconds(delayBetweenSpawns);
         }
@@ -236,6 +300,11 @@ public class GameManager : MonoBehaviour
 
         DraggableCoin coin = coinObj.GetComponent<DraggableCoin>();
         activeCoins.Add(coin);
+
+        if (audioSource != null && popOutSound != null)
+        {
+            audioSource.PlayOneShot(popOutSound);
+        }
     }
 
     void SpawnBombCoin(GameObject prefab)
@@ -251,6 +320,11 @@ public class GameManager : MonoBehaviour
 
         // SENGAJA gak dimasukin ke activeCoins — bomb coin gak dihitung buat syarat lolos stage
         activeBombCoins.Add(bombObj);
+
+        if (audioSource != null && popOutSound != null)
+        {
+            audioSource.PlayOneShot(popOutSound);
+        }
     }
 
     // Dipanggil dari BombCoin.cs pas meledak
@@ -303,6 +377,88 @@ public class GameManager : MonoBehaviour
         screenShakeTarget.anchoredPosition = originalPos; // pastiin balik pas ke posisi awal
     }
 
+    public void TriggerFlashbang()
+    {
+        StartCoroutine(FlashbangRoutine());
+    }
+
+    private IEnumerator FlashbangRoutine()
+    {
+        IsInputFrozen = true;
+
+        if (audioSource != null && flashExplodeSound != null)
+        {
+            audioSource.PlayOneShot(flashExplodeSound);
+        }
+
+        if (flashOverlayImage != null)
+        {
+            flashOverlayImage.gameObject.SetActive(true);
+
+            Color c = flashOverlayImage.color;
+            c.a = 1f; // Layar langsung putih penuh
+            flashOverlayImage.color = c;
+
+            // Acak posisi zona di balik layar putih
+            ShuffleZonePositions();
+
+            // Efek Pusing (Layar bergoyang memutar & zoom)
+            StartCoroutine(DizzyEffectRoutine(flashDuration));
+
+            // Efek memudar dari putih ke transparan
+            float t = 0f;
+            while (t < flashDuration)
+            {
+                t += Time.deltaTime;
+                c.a = Mathf.Lerp(1f, 0f, t / flashDuration);
+                flashOverlayImage.color = c;
+                yield return null;
+            }
+
+            flashOverlayImage.gameObject.SetActive(false);
+        }
+        else
+        {
+            ShuffleZonePositions();
+            StartCoroutine(DizzyEffectRoutine(flashDuration));
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        IsInputFrozen = false;
+    }
+
+    // Coroutine untuk Efek Pusing/Goyangan Layar
+    private IEnumerator DizzyEffectRoutine(float duration)
+    {
+        if (screenShakeTarget == null) yield break;
+
+        Quaternion originalRotation = screenShakeTarget.localRotation;
+        Vector3 originalScale = screenShakeTarget.localScale;
+
+        float t = 0f;
+        float frequency = 12f; // Kecepatan goyangan
+        float maxAngle = 5f;    // Kemiringan rotasi (derajat)
+        float maxScale = 0.05f; // Efek zoom in-out tipis
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float progress = t / duration;
+
+            // Kekuatan pusing makin berkurang seiring waktu (fading)
+            float currentAngle = Mathf.Sin(t * frequency) * maxAngle * (1f - progress);
+            float currentScaleOffset = Mathf.Cos(t * frequency * 0.5f) * maxScale * (1f - progress);
+
+            screenShakeTarget.localRotation = originalRotation * Quaternion.Euler(0, 0, currentAngle);
+            screenShakeTarget.localScale = originalScale + new Vector3(currentScaleOffset, currentScaleOffset, 0);
+
+            yield return null;
+        }
+
+        // Kembalikan ke posisi semula
+        screenShakeTarget.localRotation = originalRotation;
+        screenShakeTarget.localScale = originalScale;
+    }
     public void OnCoinPlacedCorrectly(DraggableCoin coin)
     {
         correctCount++;
