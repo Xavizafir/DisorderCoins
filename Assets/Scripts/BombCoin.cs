@@ -119,6 +119,12 @@ public class BombCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         isResolved = true;
         if (armCoroutine != null) StopCoroutine(armCoroutine);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PlayBombDefuseSound();
+        }
+
         Destroy(gameObject);
     }
 
@@ -129,6 +135,7 @@ public class BombCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (GameManager.Instance != null)
         {
+            GameManager.Instance.PlayBombExplodeSound();
             GameManager.Instance.FreezeInput(freezeDuration);
             GameManager.Instance.ScreenShake();
         }
@@ -148,4 +155,4 @@ public class BombCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         return null;
     }
-}
+}   

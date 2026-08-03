@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public AudioClip zoneShuffleSound; //buat zona coin geser
     public AudioClip flashExplodeSound;
     public AudioClip buttonClickSound; // dipake tombol Restart & Menu lewat PlayButtonClickSound()
+    public AudioClip bombExplodeSound; // dipake pas bomb coin meledak
+    public AudioClip bombDefuseSound;  // dipake pas bomb coin berhasil dijinakin (aman)
 
     [Header("Stage Settings")]
     public int baseTotalCoins = 4;     // total semua koin di stage 1 (gabungan semua jenis)
@@ -460,6 +462,24 @@ public class GameManager : MonoBehaviour
         if (sfxAudioSource != null && buttonClickSound != null)
         {
             sfxAudioSource.PlayOneShot(buttonClickSound);
+        }
+    }
+
+    // Dipanggil dari BombCoin.cs pas bom meledak
+    public void PlayBombExplodeSound()
+    {
+        if (sfxAudioSource != null && bombExplodeSound != null)
+        {
+            sfxAudioSource.PlayOneShot(bombExplodeSound);
+        }
+    }
+
+    // Dipanggil dari BombCoin.cs pas bom berhasil dijinakin (dilepas di luar zona sebelum meledak)
+    public void PlayBombDefuseSound()
+    {
+        if (sfxAudioSource != null && bombDefuseSound != null)
+        {
+            sfxAudioSource.PlayOneShot(bombDefuseSound);
         }
     }
 
