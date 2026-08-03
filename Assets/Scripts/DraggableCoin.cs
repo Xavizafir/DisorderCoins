@@ -155,9 +155,9 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 GameManager.Instance.OnCoinPlacedCorrectly(this);
             }
 
-            if (GameManager.Instance.audioSource != null && GameManager.Instance.coinDropSound != null)
+            if (GameManager.Instance.sfxAudioSource != null && GameManager.Instance.coinDropSound != null)
             {
-                GameManager.Instance.audioSource.PlayOneShot(GameManager.Instance.coinDropSound);
+                GameManager.Instance.sfxAudioSource.PlayOneShot(GameManager.Instance.coinDropSound);
             }
     }
         else

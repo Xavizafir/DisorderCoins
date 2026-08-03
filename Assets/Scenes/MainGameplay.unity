@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 816066218}
   - component: {fileID: 816066217}
   - component: {fileID: 816066216}
+  - component: {fileID: 816066219}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1517,6 +1518,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816066214}
   m_CullTransparentMesh: 1
+--- !u!114 &816066219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816066214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418b9c447007e974fb6cff755cfcaacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  audioSource: {fileID: 1792041486}
+  clickSound: {fileID: 8300000, guid: 43480dbea03c9bb44a89163abf590750, type: 3}
 --- !u!1 &838548103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,14 +2853,15 @@ MonoBehaviour:
   usCoinPrefab: {fileID: 1192751469}
   europeCoinPrefab: {fileID: 371718319}
   spawnArea: {fileID: 57897141}
-  audioSource: {fileID: 1792041486}
+  sfxAudioSource: {fileID: 1792041486}
   popOutSound: {fileID: 8300000, guid: 10d1ecfbaad9d1d4c9d5d43b5182c7a6, type: 3}
   coinDropSound: {fileID: 8300000, guid: f32439eb22fd157419fb58f0e8309cff, type: 3}
   zoneShuffleSound: {fileID: 8300000, guid: 667eb7338aa9cc94caab7e9b7e780065, type: 3}
   flashExplodeSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 43480dbea03c9bb44a89163abf590750, type: 3}
   baseTotalCoins: 4
   coinsIncrementPerStage: 1
-  baseTimeLimit: 15
+  baseTimeLimit: 4
   timeBonusPerStage: 10
   totalSpawnDuration: 1
   pointsPerCorrectPlacement: 10
@@ -2874,7 +2890,7 @@ MonoBehaviour:
   flashDuration: 4
   timerText: {fileID: 246859462}
   stageText: {fileID: 1118866062}
-  scoreText: {fileID: 943477731}
+  scoreText: {fileID: 0}
   freezeOverlay: {fileID: 753706938}
   screenShakeTarget: {fileID: 1478596657}
   shakeDuration: 0.4
@@ -2906,7 +2922,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3107,6 +3123,7 @@ GameObject:
   - component: {fileID: 2041480958}
   - component: {fileID: 2041480957}
   - component: {fileID: 2041480956}
+  - component: {fileID: 2041480959}
   m_Layer: 5
   m_Name: BackMenuButton
   m_TagString: Untagged
@@ -3228,6 +3245,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041480954}
   m_CullTransparentMesh: 1
+--- !u!114 &2041480959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041480954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418b9c447007e974fb6cff755cfcaacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSFX
+  audioSource: {fileID: 1792041486}
+  clickSound: {fileID: 8300000, guid: 43480dbea03c9bb44a89163abf590750, type: 3}
 --- !u!1 &2041571651
 GameObject:
   m_ObjectHideFlags: 0

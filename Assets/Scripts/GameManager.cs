@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     [Header("Spawn Area")]
     public RectTransform spawnArea; // drag kotak gelap (area tengah) ke sini
 
-    [Header("Audio Settings")]
-    public AudioSource audioSource;
+    [Header("Audio Settings (SFX only — BGM dipisah jadi GameObject sendiri)")]
+    public AudioSource sfxAudioSource;
     public AudioClip popOutSound;
     public AudioClip coinDropSound; // disimpan di sini agar mudah diakses dari DraggableCoin
     public AudioClip zoneShuffleSound; //buat zona coin geser
     public AudioClip flashExplodeSound;
+    public AudioClip buttonClickSound; // dipake tombol Restart & Menu lewat PlayButtonClickSound()
 
     [Header("Stage Settings")]
     public int baseTotalCoins = 4;     // total semua koin di stage 1 (gabungan semua jenis)
@@ -146,9 +147,9 @@ public class GameManager : MonoBehaviour
 
     void ShuffleZonePositions()
     {
-        if (audioSource != null && zoneShuffleSound != null)
+        if (sfxAudioSource != null && zoneShuffleSound != null)
         {
-            audioSource.PlayOneShot(zoneShuffleSound);
+            sfxAudioSource.PlayOneShot(zoneShuffleSound);
         }
 
         // Kocok urutan posisi slot
@@ -281,9 +282,9 @@ public class GameManager : MonoBehaviour
         DraggableCoin coin = coinObj.GetComponent<DraggableCoin>();
         activeCoins.Add(coin);
 
-        if (audioSource != null && popOutSound != null)
+        if (sfxAudioSource != null && popOutSound != null)
         {
-            audioSource.PlayOneShot(popOutSound);
+            sfxAudioSource.PlayOneShot(popOutSound);
         }
     }
 
@@ -301,9 +302,9 @@ public class GameManager : MonoBehaviour
         // SENGAJA gak dimasukin ke activeCoins — bomb coin gak dihitung buat syarat lolos stage
         activeBombCoins.Add(bombObj);
 
-        if (audioSource != null && popOutSound != null)
+        if (sfxAudioSource != null && popOutSound != null)
         {
-            audioSource.PlayOneShot(popOutSound);
+            sfxAudioSource.PlayOneShot(popOutSound);
         }
     }
 
@@ -366,9 +367,9 @@ public class GameManager : MonoBehaviour
     {
         IsInputFrozen = true;
 
-        if (audioSource != null && flashExplodeSound != null)
+        if (sfxAudioSource != null && flashExplodeSound != null)
         {
-            audioSource.PlayOneShot(flashExplodeSound);
+            sfxAudioSource.PlayOneShot(flashExplodeSound);
         }
 
         if (flashOverlayImage != null)
@@ -451,6 +452,15 @@ public class GameManager : MonoBehaviour
     private void UpdateScoreDisplay()
     {
         if (scoreText != null) scoreText.text = "Score: " + score;
+    }
+
+    // Dipanggil dari ButtonClickSFX.cs pas tombol (Restart/Menu/dll) di-klik
+    public void PlayButtonClickSound()
+    {
+        if (sfxAudioSource != null && buttonClickSound != null)
+        {
+            sfxAudioSource.PlayOneShot(buttonClickSound);
+        }
     }
 
     public void OnCoinRemovedFromCorrectPlace(DraggableCoin coin)
