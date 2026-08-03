@@ -167,38 +167,56 @@ public class GameManager : MonoBehaviour
         return x < 0.5f ? 2f * x * x : 1f - Mathf.Pow(-2f * x + 2f, 2) / 2f;
     }
 
+    // Struct kecil buat nampung 1 slot spawn: prefab-nya apa, dan apakah dia bomb atau koin asli
+    private struct SpawnItem
+    {
+        public GameObject prefab;
+        public bool isBomb;
+    }
+
     IEnumerator SpawnCoinsRoutine()
     {
         isSpawning = true;
 
         int totalCoins = baseTotalCoins + (currentStage - 1) * coinsIncrementPerStage;
         List<GameObject> allPrefabs = new List<GameObject> { indoCoinPrefab, chinaCoinPrefab, usCoinPrefab, europeCoinPrefab };
-        List<GameObject> spawnQueue = new List<GameObject>();
+        List<SpawnItem> spawnQueue = new List<SpawnItem>();
 
         // Tiap slot dipilih random dari 4 jenis, jadi komposisinya bisa timpang
         // (misal 3 biru 1 kuning, atau 4-4-nya jenis yang sama)
         for (int i = 0; i < totalCoins; i++)
         {
-            spawnQueue.Add(allPrefabs[Random.Range(0, allPrefabs.Count)]);
+            spawnQueue.Add(new SpawnItem { prefab = allPrefabs[Random.Range(0, allPrefabs.Count)], isBomb = false });
         }
 
-        float delayBetweenSpawns = totalSpawnDuration / spawnQueue.Count;
-
-        foreach (GameObject prefab in spawnQueue)
-        {
-            SpawnCoin(prefab);
-            yield return new WaitForSeconds(delayBetweenSpawns);
-        }
-
-        // Bomb coin (decoy) mulai muncul di bombStartStage, di-spawn TAMBAHAN di luar koin asli
+        // Bomb coin (decoy) mulai muncul di bombStartStage — dimasukin ke queue YANG SAMA,
+        // biar posisi munculnya ke-acak juga, bukan selalu di paling akhir
         if (currentStage >= bombStartStage && bombCoinPrefabs != null && bombCoinPrefabs.Count > 0)
         {
             for (int i = 0; i < bombCoinsPerStage; i++)
             {
                 GameObject bombPrefab = bombCoinPrefabs[Random.Range(0, bombCoinPrefabs.Count)];
-                SpawnBombCoin(bombPrefab);
-                yield return new WaitForSeconds(delayBetweenSpawns);
+                spawnQueue.Add(new SpawnItem { prefab = bombPrefab, isBomb = true });
             }
+        }
+
+        // Kocok urutan seluruh queue (koin asli + bomb tercampur acak)
+        for (int i = spawnQueue.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (spawnQueue[i], spawnQueue[j]) = (spawnQueue[j], spawnQueue[i]);
+        }
+
+        float delayBetweenSpawns = totalSpawnDuration / spawnQueue.Count;
+
+        foreach (SpawnItem item in spawnQueue)
+        {
+            if (item.isBomb)
+                SpawnBombCoin(item.prefab);
+            else
+                SpawnCoin(item.prefab);
+
+            yield return new WaitForSeconds(delayBetweenSpawns);
         }
 
         isSpawning = false;
