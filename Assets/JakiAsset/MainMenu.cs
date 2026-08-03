@@ -5,8 +5,16 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        // Pindah ke scene Gameplay (pastikan nama scene sesuai)
-        SceneManager.LoadScene("MainGameplay");
+        // Pindah ke scene Gameplay pakai transisi fade (kalau manager-nya ada di scene)
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.LoadScene("MainGameplay");
+        }
+        else
+        {
+            // Fallback: kalau SceneTransitionManager belum ke-setup, pindah langsung tanpa transisi
+            SceneManager.LoadScene("MainGameplay");
+        }
     }
 
     public void QuitGame()

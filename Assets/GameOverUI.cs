@@ -124,12 +124,29 @@ public class GameOverUI : MonoBehaviour
     // Hubungin ini ke OnClick() tombol Restart di Inspector
     public void OnRestartButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.LoadScene(currentScene);
+        }
+        else
+        {
+            // Fallback kalau SceneTransitionManager belum ke-setup di scene, biar gak error
+            SceneManager.LoadScene(currentScene);
+        }
     }
 
     // Hubungin ini ke OnClick() tombol Menu di Inspector
     public void OnMenuButton()
     {
-        SceneManager.LoadScene(menuSceneName);
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.LoadScene(menuSceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(menuSceneName);
+        }
     }
 }
