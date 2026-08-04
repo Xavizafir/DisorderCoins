@@ -31,8 +31,12 @@ public class GameManager : MonoBehaviour
     public int baseTotalCoins = 4;     // total semua koin di stage 1 (gabungan semua jenis)
     public int coinsIncrementPerStage = 1;
     public float baseTimeLimit = 15f;
-    public float timeBonusPerStage = 10f;
     public float totalSpawnDuration = 2.5f; // semua koin harus muncul dalam durasi ini
+
+    [Header("Dynamic Time Bonus (gantiin flat +10 detik)")]
+    public float secondsPerCoin = 2.5f;      // waktu tambahan PER KOIN di stage baru itu
+    public float bombPenaltyBuffer = 3f;     // ekstra detik kalau stage ini udah ada bomb coin
+    public float shufflePenaltyBuffer = 2f;  // ekstra detik kalau stage ini zona lagi diacak
 
     [Header("Scoring")]
     public int pointsPerCorrectPlacement = 10; // nambah tiap kali koin ditaruh BENAR
@@ -45,12 +49,14 @@ public class GameManager : MonoBehaviour
     [Header("Bomb Coin (Decoy)")]
     public List<GameObject> bombCoinPrefabs; // drag prefab koin PALSU (visual disguise) ke sini
     public int bombStartStage = 3; // mulai stage berapa bomb coin muncul
-    public int bombCoinsPerStage = 1; // jumlah bomb coin tiap stage (mulai bombStartStage)
+    public int bombCoinsPerStage = 1; // jumlah bomb coin pas PERTAMA kali muncul (di bombStartStage)
+    public int bombCoinsIncrementPerStage = 1; // nambah berapa tiap stage abis bombStartStage
 
     [Header("Flash Coin Settings")]
     public List<GameObject> flashCoinPrefabs; // drag prefab koin flash di sini
     public int flashStartStage = 6;           // mulai muncul di stage 6
-    public int flashCoinsPerStage = 2;
+    public int flashCoinsPerStage = 2;        // jumlah flash coin pas PERTAMA kali muncul (di flashStartStage)
+    public int flashCoinsIncrementPerStage = 1; // nambah berapa tiap stage abis flashStartStage
     public UnityEngine.UI.Image flashOverlayImage;          // Panel UI warna putih penuh
     public float flashDuration = 2.5f;
 
@@ -74,6 +80,9 @@ public class GameManager : MonoBehaviour
     private float timeRemaining;
     private bool isSpawning = false;
     private bool isGameOver = false;
+
+    // Dicek dari PauseManager.cs, biar ESC gak bisa dipencet lagi pas udah Game Over
+    public bool IsGameOver => isGameOver;
 
     private List<DraggableCoin> activeCoins = new List<DraggableCoin>();
     private List<GameObject> activeBombCoins = new List<GameObject>();
@@ -134,7 +143,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            timeRemaining += timeBonusPerStage;
+            timeRemaining += CalculateDynamicTimeBonus();
         }
 
         if (stageText != null) stageText.text = "Stage " + currentStage;
@@ -145,6 +154,26 @@ public class GameManager : MonoBehaviour
         }
 
         StartCoroutine(SpawnCoinsRoutine());
+    }
+
+    // Ganti flat +10 detik jadi dinamis: disesuaikan JUMLAH KOIN baru di stage ini,
+    // plus buffer ekstra kalau stage ini udah ada bomb dan/atau zona diacak
+    private float CalculateDynamicTimeBonus()
+    {
+        int totalCoinsThisStage = baseTotalCoins + (currentStage - 1) * coinsIncrementPerStage;
+        float bonus = totalCoinsThisStage * secondsPerCoin;
+
+        if (currentStage >= bombStartStage)
+        {
+            bonus += bombPenaltyBuffer;
+        }
+
+        if (currentStage >= shuffleStartStage)
+        {
+            bonus += shufflePenaltyBuffer;
+        }
+
+        return bonus;
     }
 
     void ShuffleZonePositions()
@@ -216,20 +245,24 @@ public class GameManager : MonoBehaviour
             spawnQueue.Add(new SpawnItem { prefab = allPrefabs[Random.Range(0, allPrefabs.Count)], isBomb = false, isFlash = false });
         }
 
-        // 2. Bomb Coin
+        // 2. Bomb Coin — jumlahnya nambah tiap stage abis bombStartStage
         if (currentStage >= bombStartStage && bombCoinPrefabs != null && bombCoinPrefabs.Count > 0)
         {
-            for (int i = 0; i < bombCoinsPerStage; i++)
+            int bombCount = bombCoinsPerStage + (currentStage - bombStartStage) * bombCoinsIncrementPerStage;
+
+            for (int i = 0; i < bombCount; i++)
             {
                 GameObject bombPrefab = bombCoinPrefabs[Random.Range(0, bombCoinPrefabs.Count)];
                 spawnQueue.Add(new SpawnItem { prefab = bombPrefab, isBomb = true, isFlash = false });
             }
         }
 
-        // 3. Flash Coin
+        // 3. Flash Coin — jumlahnya nambah tiap stage abis flashStartStage
         if (currentStage >= flashStartStage && flashCoinPrefabs != null && flashCoinPrefabs.Count > 0)
         {
-            for (int i = 0; i < flashCoinsPerStage; i++)
+            int flashCount = flashCoinsPerStage + (currentStage - flashStartStage) * flashCoinsIncrementPerStage;
+
+            for (int i = 0; i < flashCount; i++)
             {
                 GameObject flashPrefab = flashCoinPrefabs[Random.Range(0, flashCoinPrefabs.Count)];
                 spawnQueue.Add(new SpawnItem { prefab = flashPrefab, isBomb = false, isFlash = true });

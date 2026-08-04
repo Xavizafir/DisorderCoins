@@ -3,6 +3,13 @@ using UnityEngine.SceneManagement; // Wajib dipanggil untuk pindah scene
 
 public class MainMenu : MonoBehaviour
 {
+    void Awake()
+    {
+        // Setiap kali balik/masuk ke scene Menu, anggap "sesi baru" —
+        // tutorial bakal muncul lagi kalau nanti player pencet Play
+        TutorialManager.ResetTutorialFlag();
+    }
+
     public void PlayGame()
     {
         // Pindah ke scene Gameplay pakai transisi fade (kalau manager-nya ada di scene)

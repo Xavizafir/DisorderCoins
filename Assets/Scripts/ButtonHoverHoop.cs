@@ -44,7 +44,7 @@ public class ButtonHoverPop : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         while (t < animDuration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime; // biar tetep jalan walau Time.timeScale = 0 (pause/tutorial)
             float progress = Mathf.Clamp01(t / animDuration);
             float current = Mathf.Lerp(startScale, targetScale, progress);
             rectTransform.localScale = baseScale * current;
