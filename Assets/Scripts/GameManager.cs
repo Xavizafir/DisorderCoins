@@ -38,6 +38,13 @@ public class GameManager : MonoBehaviour
     public float bombPenaltyBuffer = 3f;     // ekstra detik kalau stage ini udah ada bomb coin
     public float shufflePenaltyBuffer = 2f;  // ekstra detik kalau stage ini zona lagi diacak
 
+    [Header("Color Match Mode (khusus Mode Gameplay 2 — matching by warna, bukan simbol)")]
+    public bool colorMatchMode = false; // centang ini kalau scene ini pakai mode warna
+    public Color greenTint = new Color(0.25f, 0.75f, 0.25f);
+    public Color redTint = new Color(0.85f, 0.2f, 0.2f);
+    public Color yellowTint = new Color(0.9f, 0.85f, 0.2f);
+    public Color blueTint = new Color(0.2f, 0.4f, 0.9f);
+
     [Header("Scoring")]
     public int pointsPerCorrectPlacement = 10; // nambah tiap kali koin ditaruh BENAR
 
@@ -89,6 +96,16 @@ public class GameManager : MonoBehaviour
     private int correctCount = 0;
     private List<Vector2> zoneSlotPositions = new List<Vector2>(); // posisi asli tiap slot zona
 
+    // Baseline TETAP buat screenShakeTarget — disimpen SEKALI di awal, bukan tiap kali
+    // shake/dizzy dipanggil. Ini yang bikin efek bomb+flash yang numpuk bareng gak saling
+    // korupsi "posisi/rotasi asli" satu sama lain
+    private Vector2 shakeBaselinePos;
+    private Quaternion shakeBaselineRot;
+    private Vector3 shakeBaselineScale;
+
+    // Penghitung berapa banyak sumber yang lagi minta freeze bersamaan (bomb + flash bisa numpuk)
+    private static int freezeRequestCount = 0;
+
     void Awake()
     {
         Instance = this;
@@ -100,6 +117,13 @@ public class GameManager : MonoBehaviour
         foreach (DropZone zone in zones)
         {
             zoneSlotPositions.Add(zone.GetComponent<RectTransform>().anchoredPosition);
+        }
+
+        if (screenShakeTarget != null)
+        {
+            shakeBaselinePos = screenShakeTarget.anchoredPosition;
+            shakeBaselineRot = screenShakeTarget.localRotation;
+            shakeBaselineScale = screenShakeTarget.localScale;
         }
 
         UpdateScoreDisplay();
@@ -302,6 +326,19 @@ public class GameManager : MonoBehaviour
         isSpawning = false;
     }
 
+    // Mapping CoinColorType ke warna asli buat tint visual koin di Mode Gameplay 2
+    private Color GetTintForColor(CoinColorType type)
+    {
+        switch (type)
+        {
+            case CoinColorType.Green: return greenTint;
+            case CoinColorType.Red: return redTint;
+            case CoinColorType.Yellow: return yellowTint;
+            case CoinColorType.Blue: return blueTint;
+            default: return Color.white;
+        }
+    }
+
     void SpawnCoin(GameObject prefab)
     {
         GameObject coinObj = Instantiate(prefab, spawnArea);
@@ -316,6 +353,21 @@ public class GameManager : MonoBehaviour
 
         DraggableCoin coin = coinObj.GetComponent<DraggableCoin>();
         activeCoins.Add(coin);
+
+        // Mode Gameplay 2: tiap koin dikasih warna RANDOM (independen dari simbolnya),
+        // dan visualnya di-tint sesuai warna itu, dicocokinnya nanti berdasarkan warna
+        if (colorMatchMode)
+        {
+            System.Array allColors = System.Enum.GetValues(typeof(CoinColorType));
+            CoinColorType randomColor = (CoinColorType)allColors.GetValue(Random.Range(0, allColors.Length));
+            coin.assignedColor = randomColor;
+
+            UnityEngine.UI.Image img = coinObj.GetComponent<UnityEngine.UI.Image>();
+            if (img != null)
+            {
+                img.color = GetTintForColor(randomColor);
+            }
+        }
 
         if (sfxAudioSource != null && popOutSound != null)
         {
@@ -337,6 +389,21 @@ public class GameManager : MonoBehaviour
         // SENGAJA gak dimasukin ke activeCoins — bomb coin gak dihitung buat syarat lolos stage
         activeBombCoins.Add(bombObj);
 
+        // Mode Gameplay 2: bomb/flash coin juga HARUS ikut ke-tint biar nyamar
+        // sama kayak koin normal, gak keliatan beda sendiri
+        if (colorMatchMode)
+        {
+            System.Array allColors = System.Enum.GetValues(typeof(CoinColorType));
+            CoinColorType randomColor = (CoinColorType)allColors.GetValue(Random.Range(0, allColors.Length));
+            Color tint = GetTintForColor(randomColor);
+
+            BombCoin bombComp = bombObj.GetComponent<BombCoin>();
+            if (bombComp != null) bombComp.SetVisualColor(tint);
+
+            FlashCoin flashComp = bombObj.GetComponent<FlashCoin>();
+            if (flashComp != null) flashComp.SetVisualColor(tint);
+        }
+
         if (sfxAudioSource != null && popOutSound != null)
         {
             sfxAudioSource.PlayOneShot(popOutSound);
@@ -351,13 +418,18 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FreezeInputRoutine(float duration)
     {
+        freezeRequestCount++;
         IsInputFrozen = true;
         if (freezeOverlay != null) freezeOverlay.SetActive(true);
 
         yield return new WaitForSeconds(duration);
 
-        IsInputFrozen = false;
-        if (freezeOverlay != null) freezeOverlay.SetActive(false);
+        freezeRequestCount = Mathf.Max(0, freezeRequestCount - 1);
+        if (freezeRequestCount == 0)
+        {
+            IsInputFrozen = false;
+            if (freezeOverlay != null) freezeOverlay.SetActive(false);
+        }
     }
 
     // Dipanggil dari BombCoin.cs pas meledak
@@ -371,7 +443,6 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator ScreenShakeRoutine()
     {
-        Vector2 originalPos = screenShakeTarget.anchoredPosition;
         float t = 0f;
 
         while (t < shakeDuration)
@@ -386,11 +457,13 @@ public class GameManager : MonoBehaviour
                 Random.Range(-currentMagnitude, currentMagnitude)
             );
 
-            screenShakeTarget.anchoredPosition = originalPos + offset;
+            // Pakai baseline TETAP (shakeBaselinePos), bukan posisi "sekarang" —
+            // biar aman walau ada shake lain yang numpuk bersamaan
+            screenShakeTarget.anchoredPosition = shakeBaselinePos + offset;
             yield return null;
         }
 
-        screenShakeTarget.anchoredPosition = originalPos; // pastiin balik pas ke posisi awal
+        screenShakeTarget.anchoredPosition = shakeBaselinePos; // pastiin balik pas ke posisi baseline (bukan "originalPos" lokal)
     }
 
     public void TriggerFlashbang()
@@ -400,6 +473,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator FlashbangRoutine()
     {
+        freezeRequestCount++;
         IsInputFrozen = true;
 
         if (sfxAudioSource != null && flashExplodeSound != null)
@@ -440,16 +514,17 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(flashDuration);
         }
 
-        IsInputFrozen = false;
+        freezeRequestCount = Mathf.Max(0, freezeRequestCount - 1);
+        if (freezeRequestCount == 0)
+        {
+            IsInputFrozen = false;
+        }
     }
 
     // Coroutine untuk Efek Pusing/Goyangan Layar
     private IEnumerator DizzyEffectRoutine(float duration)
     {
         if (screenShakeTarget == null) yield break;
-
-        Quaternion originalRotation = screenShakeTarget.localRotation;
-        Vector3 originalScale = screenShakeTarget.localScale;
 
         float t = 0f;
         float frequency = 12f; // Kecepatan goyangan
@@ -465,15 +540,17 @@ public class GameManager : MonoBehaviour
             float currentAngle = Mathf.Sin(t * frequency) * maxAngle * (1f - progress);
             float currentScaleOffset = Mathf.Cos(t * frequency * 0.5f) * maxScale * (1f - progress);
 
-            screenShakeTarget.localRotation = originalRotation * Quaternion.Euler(0, 0, currentAngle);
-            screenShakeTarget.localScale = originalScale + new Vector3(currentScaleOffset, currentScaleOffset, 0);
+            // Pakai baseline TETAP (shakeBaselineRot/Scale), bukan capture ulang tiap kali —
+            // biar 2 dizzy effect yang numpuk gak saling ngerusak titik "netral" satu sama lain
+            screenShakeTarget.localRotation = shakeBaselineRot * Quaternion.Euler(0, 0, currentAngle);
+            screenShakeTarget.localScale = shakeBaselineScale + new Vector3(currentScaleOffset, currentScaleOffset, 0);
 
             yield return null;
         }
 
-        // Kembalikan ke posisi semula
-        screenShakeTarget.localRotation = originalRotation;
-        screenShakeTarget.localScale = originalScale;
+        // Kembalikan ke baseline yang bener, bukan "originalRotation" lokal yang bisa udah korup
+        screenShakeTarget.localRotation = shakeBaselineRot;
+        screenShakeTarget.localScale = shakeBaselineScale;
     }
 
     public void OnCoinPlacedCorrectly(DraggableCoin coin)

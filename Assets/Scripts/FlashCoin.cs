@@ -41,6 +41,15 @@ public class FlashCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (image != null) originalColor = image.color;
     }
 
+    // Dipanggil dari GameManager.cs (khusus Mode Gameplay 2) buat nge-tint disguise-nya
+    // biar nyamar sama kayak koin normal, DAN update originalColor-nya juga
+    // biar animasi kelap-kelip gak "bocor" balik ke warna asli pas mulai di-drag
+    public void SetVisualColor(Color color)
+    {
+        originalColor = color;
+        if (image != null) image.color = color;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.IsInputFrozen || isResolved) return;
@@ -64,8 +73,9 @@ public class FlashCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        canvasGroup.blocksRaycasts = true; // WAJIB selalu di-restore duluan
+
         if (GameManager.IsInputFrozen || isResolved) return;
-        canvasGroup.blocksRaycasts = true;
 
         bool droppedInsideZone = FindZoneUnderPointer(eventData) != null;
 

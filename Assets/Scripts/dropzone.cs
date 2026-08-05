@@ -2,13 +2,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-// Tempel script ini di tiap GameObject "Place" (IndoPlace, ChinaPlace, USPlace, EuropePlace)
-// Set "Zone Type" di Inspector sesuai jenis zonanya.
+// 4 warna yang dipake buat Mode Gameplay 2 (matching by color, bukan simbol)
+public enum CoinColorType
+{
+    Green,
+    Red,
+    Yellow,
+    Blue
+}
+
+// Tempel script ini di tiap GameObject "Place" (IndoPlace, ChinaPlace, USPlace, EuropePlace,
+// atau di Mode Gameplay 2: GreenPlace, RedPlace, YellowPlace, BluePlace).
+// Set "Zone Type" di Inspector sesuai jenis zonanya (kalau matching by simbol),
+// atau centang "Match By Color" dan set "Zone Color" (kalau matching by warna).
 [RequireComponent(typeof(Image))]
 public class DropZone : MonoBehaviour
 {
-    [Header("Zone Settings")]
+    [Header("Zone Settings (Mode Normal — matching by simbol)")]
     public CoinType zoneType;
+
+    [Header("Color Mode (Mode Gameplay 2 — matching by warna)")]
+    public bool matchByColor = false; // centang ini kalau zona ini buat mode warna
+    public CoinColorType zoneColor;
 
     [Header("Snap Settings")]
     public RectTransform snapPoint; // opsional: kalau mau koin snap ke titik tengah zona, drag RectTransform zona ini ke sini
@@ -27,10 +42,18 @@ public class DropZone : MonoBehaviour
         baseScale = rectTransform.localScale;
     }
 
-    // Dipanggil dari DraggableCoin.cs pas koin di-drop di sini
-    public bool IsCorrectCoin(CoinType coinType)
+    // Dipanggil dari DraggableCoin.cs pas koin di-drop di sini.
+    // Otomatis cek berdasarkan simbol ATAU warna, tergantung "Match By Color" di zona ini.
+    public bool IsCorrectCoin(DraggableCoin coin)
     {
-        return coinType == zoneType;
+        if (matchByColor)
+        {
+            return coin.assignedColor == zoneColor;
+        }
+        else
+        {
+            return coin.coinType == zoneType;
+        }
     }
 
     // Bikin zona membesar dikit (pop) pas koin lagi di-drag di atasnya, balik normal pas gak lagi

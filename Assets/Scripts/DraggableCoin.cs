@@ -12,6 +12,9 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("Coin Settings")]
     public CoinType coinType;
 
+    [Header("Color Mode (Mode Gameplay 2 — diisi otomatis lewat kode pas spawn, gak usah diisi manual)")]
+    public CoinColorType assignedColor;
+
     [Header("Spawn Animation")]
     public float spawnAnimDuration = 0.25f; // durasi animasi pop-in
 
@@ -119,9 +122,11 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (GameManager.IsInputFrozen) return;
-
+        // WAJIB selalu di-restore duluan, apapun kondisinya — biar koin gak "ke-lock"
+        // permanen kalau kebetulan pas dilepas lagi bersamaan sama IsInputFrozen aktif
         canvasGroup.blocksRaycasts = true;
+
+        if (GameManager.IsInputFrozen) return;
 
         ScaleTo(1f, dragScaleAnimDuration);
 
@@ -134,7 +139,7 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         DropZone targetZone = FindZoneUnderPointer(eventData);
 
-        if (targetZone != null && targetZone.IsCorrectCoin(coinType))
+        if (targetZone != null && targetZone.IsCorrectCoin(this))
         {
             if (targetZone.snapPoint != null)
             {
@@ -154,12 +159,7 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 IsPlacedCorrectly = true;
                 GameManager.Instance.OnCoinPlacedCorrectly(this);
             }
-
-            if (GameManager.Instance.sfxAudioSource != null && GameManager.Instance.coinDropSound != null)
-            {
-                GameManager.Instance.sfxAudioSource.PlayOneShot(GameManager.Instance.coinDropSound);
-            }
-    }
+        }
         else
         {
             // Salah taruh (atau di-drop di area kosong): koin TETAP di posisi drop terakhir,

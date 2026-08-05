@@ -30,4 +30,19 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Game Quit"); // Untuk mengecek di Editor Unity bahwa fungsi dipanggil
     }
+
+    public void NewMode()
+    {
+        // Pindah ke scene Gameplay pakai transisi fade (kalau manager-nya ada di scene)
+        if (SceneTransitionManager.Instance != null)
+        {
+            SceneTransitionManager.Instance.LoadScene("ModeGameplay2");
+        }
+        else
+        {
+            // Fallback: kalau SceneTransitionManager belum ke-setup, pindah langsung tanpa transisi
+            SceneManager.LoadScene("ModeGameplay2");
+        }
+    }
+
 }
