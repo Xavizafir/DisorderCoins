@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 0
+  matchByColor: 0
+  zoneColor: 0
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -377,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.16862746, g: 0.83137256, b: 0.4509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -791,10 +793,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 22.499998, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &199548468
 CanvasRenderer:
@@ -1196,6 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 1
+  matchByColor: 0
+  zoneColor: 3
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -1212,14 +1216,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.30588233, g: 0.96401125, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8810017340889447223, guid: 37270ed14cfb3ff489f0b0b8c05ab067, type: 3}
+  m_Sprite: {fileID: 5609494695635531491, guid: 58ca814c1f9c28e4a90ef02cc5bcbe99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1506,10 +1510,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 95.83333, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406692144
 MonoBehaviour:
@@ -1801,10 +1805,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40.833332, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &504398676
 CanvasRenderer:
@@ -5153,10 +5157,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 4.166668, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1231651287
 CanvasRenderer:
@@ -5440,7 +5444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1355207293
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5521,7 +5525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364469449}
   m_Layer: 5
-  m_Name: Page1
+  m_Name: Page2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5719,8 +5723,8 @@ MonoBehaviour:
   fadeDuration: 0.4
   pages:
   - {fileID: 57174210}
-  - {fileID: 1364469448}
   - {fileID: 1548243711}
+  - {fileID: 1364469448}
   - {fileID: 1480685444}
   - {fileID: 624880154}
   - {fileID: 251887899}
@@ -6293,6 +6297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 3
+  matchByColor: 0
+  zoneColor: 2
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -6309,7 +6315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.827451, g: 0.7411765, b: 0.17254902, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6344,7 +6350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548243712}
   m_Layer: 5
-  m_Name: Page2
+  m_Name: Page1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7159,6 +7165,11 @@ MonoBehaviour:
   secondsPerCoin: 2
   bombPenaltyBuffer: 0
   shufflePenaltyBuffer: 0
+  colorMatchMode: 1
+  greenTint: {r: 0.25, g: 0.75, b: 0.25, a: 1}
+  redTint: {r: 1, g: 0, b: 0.78613853, a: 1}
+  yellowTint: {r: 0.9, g: 0.85, b: 0.2, a: 1}
+  blueTint: {r: 0, g: 0.47132254, b: 1, a: 1}
   pointsPerCorrectPlacement: 10
   zones:
   - {fileID: 85540087}
@@ -7431,10 +7442,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 59.166664, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1882589440
 CanvasRenderer:
@@ -8342,10 +8353,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 165151231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 77.49999, y: -50}
+  m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2093465868
 CanvasRenderer:
@@ -8515,6 +8526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 2
+  matchByColor: 0
+  zoneColor: 1
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -8531,7 +8544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.94427156, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

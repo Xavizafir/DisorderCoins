@@ -1,7 +1,7 @@
 public enum CoinType
 {
-    Indonesia,
-    China,
-    US,
-    Europe
+    Clover,
+    Square,
+    Heart,
+    Line
 }

@@ -361,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 0
+  matchByColor: 0
+  zoneColor: 0
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -1196,6 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 1
+  matchByColor: 0
+  zoneColor: 0
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -5521,7 +5525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364469449}
   m_Layer: 5
-  m_Name: Page1
+  m_Name: Page2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5719,8 +5723,8 @@ MonoBehaviour:
   fadeDuration: 0.4
   pages:
   - {fileID: 57174210}
-  - {fileID: 1364469448}
   - {fileID: 1548243711}
+  - {fileID: 1364469448}
   - {fileID: 1480685444}
   - {fileID: 624880154}
   - {fileID: 251887899}
@@ -6293,6 +6297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 3
+  matchByColor: 0
+  zoneColor: 0
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
@@ -6344,7 +6350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548243712}
   m_Layer: 5
-  m_Name: Page2
+  m_Name: Page1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7159,6 +7165,11 @@ MonoBehaviour:
   secondsPerCoin: 2
   bombPenaltyBuffer: 0
   shufflePenaltyBuffer: 0
+  colorMatchMode: 0
+  greenTint: {r: 0.25, g: 0.75, b: 0.25, a: 1}
+  redTint: {r: 0.85, g: 0.2, b: 0.2, a: 1}
+  yellowTint: {r: 0.9, g: 0.85, b: 0.2, a: 1}
+  blueTint: {r: 0.2, g: 0.4, b: 0.9, a: 1}
   pointsPerCorrectPlacement: 10
   zones:
   - {fileID: 85540087}
@@ -8515,6 +8526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   zoneType: 2
+  matchByColor: 0
+  zoneColor: 0
   snapPoint: {fileID: 0}
   highlightScaleMultiplier: 1.1
   highlightAnimDuration: 0.15
