@@ -115,4 +115,16 @@ public class DropZone : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         coinRect.position = pos;
     }
+
+    // Dipanggil dari GameManager.cs pas revalidasi koin abis zona geser (shuffle/flash).
+    // Cek apakah suatu titik posisi (world space) lagi ada DI DALAM kotak zona ini.
+    public bool ContainsWorldPosition(Vector3 worldPos)
+    {
+        RectTransform zoneRect = GetComponent<RectTransform>();
+        Vector3[] corners = new Vector3[4];
+        zoneRect.GetWorldCorners(corners); // [0]=kiri-bawah, [2]=kanan-atas
+
+        return worldPos.x >= corners[0].x && worldPos.x <= corners[2].x &&
+               worldPos.y >= corners[0].y && worldPos.y <= corners[2].y;
+    }
 }

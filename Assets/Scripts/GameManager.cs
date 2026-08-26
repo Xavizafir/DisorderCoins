@@ -109,6 +109,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        // PENTING: reset paksa tiap scene baru dimulai. freezeRequestCount & IsInputFrozen
+        // itu static, jadi bisa "kebawa" nilai sisa dari scene sebelumnya kalau ada
+        // coroutine freeze yang keputus di tengah jalan (misal gara-gara Restart/Menu
+        // dipencet pas lagi ada bomb/flash yang lagi ngefreeze). Tanpa reset ini,
+        // freeze bisa numpuk jadi permanen gak pernah kebuka lagi.
+        freezeRequestCount = 0;
+        IsInputFrozen = false;
     }
 
     void Start()
@@ -220,6 +228,24 @@ public class GameManager : MonoBehaviour
         {
             RectTransform zoneRect = zones[i].GetComponent<RectTransform>();
             StartCoroutine(MoveZoneSmooth(zoneRect, shuffledSlots[i], zoneMoveDuration));
+        }
+
+        // Setelah semua zona selesai geser, cek ulang penempatan tiap koin yang UDAH ADA
+        // (kalau kejadian di tengah stage, misal dari efek flash) — biar koin yang tadinya
+        // bener tapi zonanya udah pindah, otomatis dianggap gak bener lagi
+        StartCoroutine(RevalidateCoinsAfterShuffle());
+    }
+
+    private IEnumerator RevalidateCoinsAfterShuffle()
+    {
+        yield return new WaitForSeconds(zoneMoveDuration);
+
+        foreach (DraggableCoin coin in activeCoins)
+        {
+            if (coin != null)
+            {
+                coin.RevalidateAgainstZones(zones);
+            }
         }
     }
 

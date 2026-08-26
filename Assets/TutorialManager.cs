@@ -36,6 +36,9 @@ public class TutorialManager : MonoBehaviour
     public CanvasGroup tutorialCanvasGroup; // buat efek fade, taruh di GameObject yang sama kayak Tutorial Panel Root
     public float fadeDuration = 0.4f;
 
+    [Header("Skip Tutorial (khusus scene ini)")]
+    public bool disableTutorial = false; // centang ini di Mode Gameplay 2/3 biar langsung main tanpa tutorial
+
     [Header("Halaman Tutorial (urutan sesuai urutan tampil)")]
     public List<GameObject> pages;
 
@@ -57,6 +60,17 @@ public class TutorialManager : MonoBehaviour
     {
         if (nextButton != null) nextButton.onClick.AddListener(OnNextClicked);
         if (skipAllButton != null) skipAllButton.onClick.AddListener(OnSkipAllClicked);
+
+        // Scene ini emang gak dikasih tutorial sama sekali (misal Mode Gameplay 2/3) —
+        // langsung skip total, gak peduli status hasShownTutorial
+        if (disableTutorial)
+        {
+            if (tutorialPanelRoot != null) tutorialPanelRoot.SetActive(false);
+            IsTutorialActive = false;
+            Time.timeScale = 1f;
+            GameManager.IsInputFrozen = false;
+            return;
+        }
 
         // Udah pernah liat tutorial di sesi ini (misal abis Restart) — langsung skip,
         // gameplay lanjut normal tanpa nampilin tutorial lagi

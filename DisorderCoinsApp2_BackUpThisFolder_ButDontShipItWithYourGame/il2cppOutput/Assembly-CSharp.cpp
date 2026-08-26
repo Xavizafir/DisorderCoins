@@ -6831,7 +6831,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_Awake_m4B6E8E2AF58C95C9A2A0C
 		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:111>
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___Instance = __this;
 		Il2CppCodeGenWriteBarrier((void**)(&((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___Instance), (void*)__this);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:112>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:118>
+		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount = 0;
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:119>
+		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___IsInputFrozen = (bool)0;
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:120>
 		return;
 	}
 }
@@ -6854,7 +6858,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_Start_m87A71D65F3171A58DBDDB
 	memset((&V_0), 0, sizeof(V_0));
 	DropZone_tADC88EFD6D08E077CD2D1D5EE1D218DDB5F5475C* V_1 = NULL;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:117>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:125>
 		List_1_t434A0035576685C7D3236ADFE82343856F434C55* L_0 = __this->___zones;
 		NullCheck(L_0);
 		Enumerator_t76988CFE587A89D036229FB3076D650F35C28E74 L_1;
@@ -6879,11 +6883,11 @@ FINALLY_0037:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:117>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:125>
 				DropZone_tADC88EFD6D08E077CD2D1D5EE1D218DDB5F5475C* L_2;
 				L_2 = Enumerator_get_Current_m2BA90C4496ACAA908415912112BCD7743868E146_inline((&V_0), Enumerator_get_Current_m2BA90C4496ACAA908415912112BCD7743868E146_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:119>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:127>
 				List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_3 = __this->___zoneSlotPositions;
 				DropZone_tADC88EFD6D08E077CD2D1D5EE1D218DDB5F5475C* L_4 = V_1;
 				NullCheck(L_4);
@@ -6898,7 +6902,7 @@ IL_000e_1:
 
 IL_002c_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:117>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:125>
 				bool L_7;
 				L_7 = Enumerator_MoveNext_m1C80AFCBDED911FA7B437157A81A5B5505BA854A((&V_0), Enumerator_MoveNext_m1C80AFCBDED911FA7B437157A81A5B5505BA854A_RuntimeMethod_var);
 				if (L_7)
@@ -6918,7 +6922,7 @@ IL_002c_1:
 
 IL_0045:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:122>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:130>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_8 = __this->___screenShakeTarget;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -6929,19 +6933,19 @@ IL_0045:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:124>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:132>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_10 = __this->___screenShakeTarget;
 		NullCheck(L_10);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11;
 		L_11 = RectTransform_get_anchoredPosition_m38F25A4253B0905BB058BE73DBF43C7172CE0680(L_10, NULL);
 		__this->___shakeBaselinePos = L_11;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:125>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:133>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_12 = __this->___screenShakeTarget;
 		NullCheck(L_12);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_13;
 		L_13 = Transform_get_localRotation_mD53D37611A5DAE93EC6C7BBCAC337408C5CACA77(L_12, NULL);
 		__this->___shakeBaselineRot = L_13;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:126>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:134>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_14 = __this->___screenShakeTarget;
 		NullCheck(L_14);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15;
@@ -6951,11 +6955,11 @@ IL_0045:
 
 IL_0086:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:129>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:137>
 		GameManager_UpdateScoreDisplay_m8CF84F7DB60A3277610E14522B75F60C6B94C92A(__this, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:130>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:138>
 		GameManager_StartStage_m3221063E8A5F3539816F02B4D2732072A056E117(__this, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:131>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:139>
 		return;
 	}
 }
@@ -6970,7 +6974,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_Update_m7F29D8E933B8D21D2E67
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:135>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:143>
 		bool L_0 = __this->___isGameOver;
 		if (L_0)
 		{
@@ -6987,18 +6991,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_Update_m7F29D8E933B8D21D2E67
 
 IL_0010:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:135>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:143>
 		return;
 	}
 
 IL_0011:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:137>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:145>
 		float L_2 = __this->___timeRemaining;
 		float L_3;
 		L_3 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___timeRemaining = ((float)il2cpp_codegen_subtract(L_2, L_3));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:138>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:146>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_4 = __this->___timerText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -7009,7 +7013,7 @@ IL_0011:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:138>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:146>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_6 = __this->___timerText;
 		float L_7 = __this->___timeRemaining;
 		int32_t L_8;
@@ -7025,7 +7029,7 @@ IL_0011:
 
 IL_0055:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:140>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:148>
 		float L_11 = __this->___timeRemaining;
 		if ((!(((float)L_11) <= ((float)(0.0f)))))
 		{
@@ -7033,13 +7037,13 @@ IL_0055:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:142>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:150>
 		GameManager_GameOver_mF1BD400E7F84A0B533A58E80ADA7CCB89C964625(__this, NULL);
 	}
 
 IL_0068:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:144>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:152>
 		return;
 	}
 }
@@ -7070,7 +7074,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_StartStage_m3221063E8A5F3539
 	memset((&V_2), 0, sizeof(V_2));
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* V_3 = NULL;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:149>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:157>
 		List_1_t941C9F7C5DCF3FD5239DF23688C0D7B495E0FB67* L_0 = __this->___activeCoins;
 		NullCheck(L_0);
 		Enumerator_t725136555EED51FEA5907DBB4DEB7C55EBCCDB63 L_1;
@@ -7095,11 +7099,11 @@ FINALLY_0035:
 
 IL_000e_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:149>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:157>
 				DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_2;
 				L_2 = Enumerator_get_Current_m65B62A2C1DD359F99AB8D16F3483D0C5593F34D9_inline((&V_0), Enumerator_get_Current_m65B62A2C1DD359F99AB8D16F3483D0C5593F34D9_RuntimeMethod_var);
 				V_1 = L_2;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:151>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:159>
 				DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_3 = V_1;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				bool L_4;
@@ -7110,7 +7114,7 @@ IL_000e_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:151>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:159>
 				DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_5 = V_1;
 				NullCheck(L_5);
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6;
@@ -7121,7 +7125,7 @@ IL_000e_1:
 
 IL_002a_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:149>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:157>
 				bool L_7;
 				L_7 = Enumerator_MoveNext_m506437F4B33D0697CB082E7EE41A478078BA14FA((&V_0), Enumerator_MoveNext_m506437F4B33D0697CB082E7EE41A478078BA14FA_RuntimeMethod_var);
 				if (L_7)
@@ -7141,7 +7145,7 @@ IL_002a_1:
 
 IL_0043:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:155>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:163>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_8 = __this->___activeBombCoins;
 		NullCheck(L_8);
 		Enumerator_t88BD1282EF117E59AACFC9EC55B89F0B9EDACE60 L_9;
@@ -7166,11 +7170,11 @@ FINALLY_0073:
 
 IL_0051_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:155>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:163>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10;
 				L_10 = Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_inline((&V_2), Enumerator_get_Current_m7236EBE1CFCB6533F96E030500D322B13D0CA5A4_RuntimeMethod_var);
 				V_3 = L_10;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:157>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:165>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = V_3;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				bool L_12;
@@ -7181,7 +7185,7 @@ IL_0051_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:157>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:165>
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = V_3;
 				il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 				Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_13, NULL);
@@ -7189,7 +7193,7 @@ IL_0051_1:
 
 IL_0068_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:155>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:163>
 				bool L_14;
 				L_14 = Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27((&V_2), Enumerator_MoveNext_m96F4B0BD0A5485C8E8CC57D961DF6F1FA256AF27_RuntimeMethod_var);
 				if (L_14)
@@ -7209,17 +7213,17 @@ IL_0068_1:
 
 IL_0081:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:160>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:168>
 		__this->___correctCount = 0;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:161>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:169>
 		List_1_t941C9F7C5DCF3FD5239DF23688C0D7B495E0FB67* L_15 = __this->___activeCoins;
 		NullCheck(L_15);
 		List_1_Clear_m083A6EBEBAE832173A4E3D2EE2F833812BF4DDAE_inline(L_15, List_1_Clear_m083A6EBEBAE832173A4E3D2EE2F833812BF4DDAE_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:162>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:170>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_16 = __this->___activeBombCoins;
 		NullCheck(L_16);
 		List_1_Clear_m32D399BDD753B5BD6CE27560249096418F3F0867_inline(L_16, List_1_Clear_m32D399BDD753B5BD6CE27560249096418F3F0867_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:164>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:172>
 		int32_t L_17 = __this->___currentStage;
 		if ((!(((uint32_t)L_17) == ((uint32_t)1))))
 		{
@@ -7227,7 +7231,7 @@ IL_0081:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:166>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:174>
 		float L_18 = __this->___baseTimeLimit;
 		__this->___timeRemaining = L_18;
 		goto IL_00c8;
@@ -7235,7 +7239,7 @@ IL_0081:
 
 IL_00b5:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:170>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:178>
 		float L_19 = __this->___timeRemaining;
 		float L_20;
 		L_20 = GameManager_CalculateDynamicTimeBonus_m3773012C49DFA497FDB416CEAE5EDF71DEA9B921(__this, NULL);
@@ -7244,7 +7248,7 @@ IL_00b5:
 
 IL_00c8:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:173>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:181>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_21 = __this->___stageText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_22;
@@ -7255,7 +7259,7 @@ IL_00c8:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:173>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:181>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_23 = __this->___stageText;
 		int32_t* L_24 = (int32_t*)(&__this->___currentStage);
 		String_t* L_25;
@@ -7268,7 +7272,7 @@ IL_00c8:
 
 IL_00f6:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:175>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:183>
 		int32_t L_27 = __this->___currentStage;
 		int32_t L_28 = __this->___shuffleStartStage;
 		if ((((int32_t)L_27) < ((int32_t)L_28)))
@@ -7277,18 +7281,18 @@ IL_00f6:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:177>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:185>
 		GameManager_ShuffleZonePositions_mF7664E42FB3A6DCA0A0C4EB6BCFB4BD1A7C9AB91(__this, NULL);
 	}
 
 IL_010a:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:180>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:188>
 		RuntimeObject* L_29;
 		L_29 = GameManager_SpawnCoinsRoutine_m93A869D94CBA54E3F3833E8981CA2205ECC9E02C(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_30;
 		L_30 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_29, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:181>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:189>
 		return;
 	}
 }
@@ -7297,14 +7301,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float GameManager_CalculateDynamicTimeBonus_m
 {
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:187>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:195>
 		int32_t L_0 = __this->___baseTotalCoins;
 		int32_t L_1 = __this->___currentStage;
 		int32_t L_2 = __this->___coinsIncrementPerStage;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:188>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:196>
 		float L_3 = __this->___secondsPerCoin;
 		V_0 = ((float)il2cpp_codegen_multiply(((float)((int32_t)il2cpp_codegen_add(L_0, ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_subtract(L_1, 1)), L_2))))), L_3));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:190>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:198>
 		int32_t L_4 = __this->___currentStage;
 		int32_t L_5 = __this->___bombStartStage;
 		if ((((int32_t)L_4) < ((int32_t)L_5)))
@@ -7313,7 +7317,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float GameManager_CalculateDynamicTimeBonus_m
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:192>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:200>
 		float L_6 = V_0;
 		float L_7 = __this->___bombPenaltyBuffer;
 		V_0 = ((float)il2cpp_codegen_add(L_6, L_7));
@@ -7321,7 +7325,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float GameManager_CalculateDynamicTimeBonus_m
 
 IL_0036:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:195>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:203>
 		int32_t L_8 = __this->___currentStage;
 		int32_t L_9 = __this->___shuffleStartStage;
 		if ((((int32_t)L_8) < ((int32_t)L_9)))
@@ -7330,7 +7334,7 @@ IL_0036:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:197>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:205>
 		float L_10 = V_0;
 		float L_11 = __this->___shufflePenaltyBuffer;
 		V_0 = ((float)il2cpp_codegen_add(L_10, L_11));
@@ -7338,7 +7342,7 @@ IL_0036:
 
 IL_004d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:200>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:208>
 		float L_12 = V_0;
 		return L_12;
 	}
@@ -7375,7 +7379,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ShuffleZonePositions_mF7664E
 	int32_t V_9 = 0;
 	RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* V_10 = NULL;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:205>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:213>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_0 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7396,7 +7400,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ShuffleZonePositions_mF7664E
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:207>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:215>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_4 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_5 = __this->___zoneShuffleSound;
 		NullCheck(L_4);
@@ -7405,12 +7409,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ShuffleZonePositions_mF7664E
 
 IL_002d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:211>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:219>
 		List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_6 = __this->___zoneSlotPositions;
 		List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_7 = (List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B*)il2cpp_codegen_object_new(List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B_il2cpp_TypeInfo_var);
 		List_1__ctor_m105596C2159C46B75E96D26ACEC0A5C1C1F5C5EC(L_7, L_6, List_1__ctor_m105596C2159C46B75E96D26ACEC0A5C1C1F5C5EC_RuntimeMethod_var);
 		V_0 = L_7;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:212>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:220>
 		List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_8 = V_0;
 		NullCheck(L_8);
 		int32_t L_9;
@@ -7421,12 +7425,12 @@ IL_002d:
 
 IL_0044:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:214>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:222>
 		int32_t L_10 = V_1;
 		int32_t L_11;
 		L_11 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(0, ((int32_t)il2cpp_codegen_add(L_10, 1)), NULL);
 		V_2 = L_11;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:215>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:223>
 		List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_12 = V_0;
 		int32_t L_13 = V_1;
 		V_3 = L_13;
@@ -7459,14 +7463,14 @@ IL_0044:
 		V_8 = L_28;
 		NullCheck(L_25);
 		List_1_set_Item_m4512A91B4D4ABD38CA845D6E56F471390A4EC2E0(L_25, L_26, L_28, List_1_set_Item_m4512A91B4D4ABD38CA845D6E56F471390A4EC2E0_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:212>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:220>
 		int32_t L_29 = V_1;
 		V_1 = ((int32_t)il2cpp_codegen_subtract(L_29, 1));
 	}
 
 IL_0086:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:212>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:220>
 		int32_t L_30 = V_1;
 		if ((((int32_t)L_30) > ((int32_t)0)))
 		{
@@ -7474,14 +7478,14 @@ IL_0086:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:219>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:227>
 		V_9 = 0;
 		goto IL_00c6;
 	}
 
 IL_008f:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:221>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:229>
 		List_1_t434A0035576685C7D3236ADFE82343856F434C55* L_31 = __this->___zones;
 		int32_t L_32 = V_9;
 		NullCheck(L_31);
@@ -7491,7 +7495,7 @@ IL_008f:
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_34;
 		L_34 = Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4(L_33, Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var);
 		V_10 = L_34;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:222>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:230>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_35 = V_10;
 		List_1_t8F3790B7F8C471B3A1336522C7415FB0AC36D47B* L_36 = V_0;
 		int32_t L_37 = V_9;
@@ -7503,14 +7507,14 @@ IL_008f:
 		L_40 = GameManager_MoveZoneSmooth_mF82164CBF745086FB2EADA960BD60D06EBDF5A1E(__this, L_35, L_38, L_39, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_41;
 		L_41 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_40, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:219>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:227>
 		int32_t L_42 = V_9;
 		V_9 = ((int32_t)il2cpp_codegen_add(L_42, 1));
 	}
 
 IL_00c6:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:219>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:227>
 		int32_t L_43 = V_9;
 		List_1_t434A0035576685C7D3236ADFE82343856F434C55* L_44 = __this->___zones;
 		NullCheck(L_44);
@@ -7522,7 +7526,7 @@ IL_00c6:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:224>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:232>
 		return;
 	}
 }
@@ -7562,7 +7566,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameManager_MoveZoneSmooth_mF8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float GameManager_EaseInOutQuad_m8A42A134709C7F4C11BFBCCAB873530C6866F9AD (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, float ___0_x, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:246>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:254>
 		float L_0 = ___0_x;
 		if ((((float)L_0) < ((float)(0.5f))))
 		{
@@ -7633,35 +7637,35 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Color_tD001788D726C3A7F1379BEED0260B9591F440C
 
 IL_0018:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:334>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:342>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_1 = __this->___greenTint;
 		return L_1;
 	}
 
 IL_001f:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:335>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:343>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_2 = __this->___redTint;
 		return L_2;
 	}
 
 IL_0026:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:336>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:344>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_3 = __this->___yellowTint;
 		return L_3;
 	}
 
 IL_002d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:337>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:345>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_4 = __this->___blueTint;
 		return L_4;
 	}
 
 IL_0034:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:338>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:346>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_5;
 		L_5 = Color_get_white_m068F5AF879B0FCA584E3693F762EA41BB65532C6_inline(NULL);
 		return L_5;
@@ -7696,21 +7700,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 	int32_t V_8 = 0;
 	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* V_9 = NULL;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:344>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:352>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_prefab;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___spawnArea;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
 		L_2 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m58C654F1134533E29502629CA67645682B404811(L_0, L_1, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m58C654F1134533E29502629CA67645682B404811_RuntimeMethod_var);
 		V_0 = L_2;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:345>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:353>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = V_0;
 		NullCheck(L_3);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_4;
 		L_4 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_3, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:348>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:356>
 		V_1 = (40.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:349>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:357>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_5 = __this->___spawnArea;
 		NullCheck(L_5);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_6;
@@ -7720,7 +7724,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		L_7 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_6), NULL);
 		float L_8 = V_1;
 		V_2 = ((float)il2cpp_codegen_subtract(((float)(L_7/(2.0f))), L_8));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:350>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:358>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = __this->___spawnArea;
 		NullCheck(L_9);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_10;
@@ -7730,7 +7734,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		L_11 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_6), NULL);
 		float L_12 = V_1;
 		V_3 = ((float)il2cpp_codegen_subtract(((float)(L_11/(2.0f))), L_12));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:351>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:359>
 		float L_13 = V_2;
 		float L_14 = V_2;
 		float L_15;
@@ -7740,22 +7744,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		float L_18;
 		L_18 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(((-L_16)), L_17, NULL);
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&V_4), L_15, L_18, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:352>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:360>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_19 = V_4;
 		NullCheck(L_4);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_4, L_19, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:354>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:362>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20 = V_0;
 		NullCheck(L_20);
 		DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_21;
 		L_21 = GameObject_GetComponent_TisDraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A_mEED4269C8C70D3DF8583DDECB2F5495FEE592E38(L_20, GameObject_GetComponent_TisDraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A_mEED4269C8C70D3DF8583DDECB2F5495FEE592E38_RuntimeMethod_var);
 		V_5 = L_21;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:355>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:363>
 		List_1_t941C9F7C5DCF3FD5239DF23688C0D7B495E0FB67* L_22 = __this->___activeCoins;
 		DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_23 = V_5;
 		NullCheck(L_22);
 		List_1_Add_mFC5B8205BDF5849A34E480C5FDFEB80B6BEF60DF_inline(L_22, L_23, List_1_Add_mFC5B8205BDF5849A34E480C5FDFEB80B6BEF60DF_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:359>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:367>
 		bool L_24 = __this->___colorMatchMode;
 		if (!L_24)
 		{
@@ -7763,7 +7767,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:361>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:369>
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_25 = { reinterpret_cast<intptr_t> (CoinColorType_tC20D9292930CDADA3B90E0783D0A4D632089CD38_0_0_0_var) };
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.systemtype_class);
 		Type_t* L_26;
@@ -7772,7 +7776,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		RuntimeArray* L_27;
 		L_27 = Enum_GetValues_m803B9D68C367FAABC5AFB6B5B52775C8A573CEF9(L_26, NULL);
 		V_7 = L_27;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:362>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:370>
 		RuntimeArray* L_28 = V_7;
 		RuntimeArray* L_29 = V_7;
 		NullCheck(L_29);
@@ -7784,18 +7788,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		RuntimeObject* L_32;
 		L_32 = Array_GetValue_m007D247B8A6FE5BD60FD1CD510A714A416F2BA21(L_28, L_31, NULL);
 		V_8 = ((*(int32_t*)UnBox(L_32, CoinColorType_tC20D9292930CDADA3B90E0783D0A4D632089CD38_il2cpp_TypeInfo_var)));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:363>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:371>
 		DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* L_33 = V_5;
 		int32_t L_34 = V_8;
 		NullCheck(L_33);
 		L_33->___assignedColor = L_34;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:365>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:373>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_35 = V_0;
 		NullCheck(L_35);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_36;
 		L_36 = GameObject_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA59EA7D5F9133B2593F4AB70B099928BA955EE7D(L_35, GameObject_GetComponent_TisImage_tBC1D03F63BF71132E9A5E472B8742F172A011E7E_mA59EA7D5F9133B2593F4AB70B099928BA955EE7D_RuntimeMethod_var);
 		V_9 = L_36;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:366>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:374>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_37 = V_9;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_38;
@@ -7806,7 +7810,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:368>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:376>
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_39 = V_9;
 		int32_t L_40 = V_8;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_41;
@@ -7817,7 +7821,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnCoin_m840D76F9F98815807
 
 IL_00e4:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:372>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:380>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_42 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_43;
@@ -7838,7 +7842,7 @@ IL_00e4:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:374>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:382>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_46 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_47 = __this->___popOutSound;
 		NullCheck(L_46);
@@ -7847,7 +7851,7 @@ IL_00e4:
 
 IL_0111:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:376>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:384>
 		return;
 	}
 }
@@ -7882,21 +7886,21 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 	BombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B* V_9 = NULL;
 	FlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD* V_10 = NULL;
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:380>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:388>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0 = ___0_prefab;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___spawnArea;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_2;
 		L_2 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m58C654F1134533E29502629CA67645682B404811(L_0, L_1, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m58C654F1134533E29502629CA67645682B404811_RuntimeMethod_var);
 		V_0 = L_2;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:381>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:389>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = V_0;
 		NullCheck(L_3);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_4;
 		L_4 = GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4(L_3, GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:383>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:391>
 		V_1 = (40.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:384>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:392>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_5 = __this->___spawnArea;
 		NullCheck(L_5);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_6;
@@ -7906,7 +7910,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		L_7 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_5), NULL);
 		float L_8 = V_1;
 		V_2 = ((float)il2cpp_codegen_subtract(((float)(L_7/(2.0f))), L_8));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:385>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:393>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_9 = __this->___spawnArea;
 		NullCheck(L_9);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_10;
@@ -7916,7 +7920,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		L_11 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_5), NULL);
 		float L_12 = V_1;
 		V_3 = ((float)il2cpp_codegen_subtract(((float)(L_11/(2.0f))), L_12));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:386>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:394>
 		float L_13 = V_2;
 		float L_14 = V_2;
 		float L_15;
@@ -7926,16 +7930,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		float L_18;
 		L_18 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(((-L_16)), L_17, NULL);
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&V_4), L_15, L_18, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:387>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:395>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_19 = V_4;
 		NullCheck(L_4);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_4, L_19, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:390>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:398>
 		List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_20 = __this->___activeBombCoins;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_21 = V_0;
 		NullCheck(L_20);
 		List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_20, L_21, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:394>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:402>
 		bool L_22 = __this->___colorMatchMode;
 		if (!L_22)
 		{
@@ -7943,7 +7947,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:396>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:404>
 		RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B L_23 = { reinterpret_cast<intptr_t> (CoinColorType_tC20D9292930CDADA3B90E0783D0A4D632089CD38_0_0_0_var) };
 		il2cpp_codegen_runtime_class_init_inline(il2cpp_defaults.systemtype_class);
 		Type_t* L_24;
@@ -7952,7 +7956,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		RuntimeArray* L_25;
 		L_25 = Enum_GetValues_m803B9D68C367FAABC5AFB6B5B52775C8A573CEF9(L_24, NULL);
 		V_6 = L_25;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:397>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:405>
 		RuntimeArray* L_26 = V_6;
 		RuntimeArray* L_27 = V_6;
 		NullCheck(L_27);
@@ -7964,18 +7968,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		RuntimeObject* L_30;
 		L_30 = Array_GetValue_m007D247B8A6FE5BD60FD1CD510A714A416F2BA21(L_26, L_29, NULL);
 		V_7 = ((*(int32_t*)UnBox(L_30, CoinColorType_tC20D9292930CDADA3B90E0783D0A4D632089CD38_il2cpp_TypeInfo_var)));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:398>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:406>
 		int32_t L_31 = V_7;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_32;
 		L_32 = GameManager_GetTintForColor_m9D85A7588AEA8BB314452068947C8F141DE4A0AF(__this, L_31, NULL);
 		V_8 = L_32;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:400>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:408>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_33 = V_0;
 		NullCheck(L_33);
 		BombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B* L_34;
 		L_34 = GameObject_GetComponent_TisBombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B_mEDCC30BEDDC499252DF38CFC268443569B019F41(L_33, GameObject_GetComponent_TisBombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B_mEDCC30BEDDC499252DF38CFC268443569B019F41_RuntimeMethod_var);
 		V_9 = L_34;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:401>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:409>
 		BombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B* L_35 = V_9;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_36;
@@ -7986,7 +7990,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:401>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:409>
 		BombCoin_t8AFB95887DCD47C64C0E11A6AA60DEC9232DF19B* L_37 = V_9;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_38 = V_8;
 		NullCheck(L_37);
@@ -7995,13 +7999,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_SpawnBombCoin_m3EFB174384EE3
 
 IL_00d6:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:403>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:411>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_39 = V_0;
 		NullCheck(L_39);
 		FlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD* L_40;
 		L_40 = GameObject_GetComponent_TisFlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD_mBCDAD8F842A7FDFFFE9C89642D8258296908F9DD(L_39, GameObject_GetComponent_TisFlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD_mBCDAD8F842A7FDFFFE9C89642D8258296908F9DD_RuntimeMethod_var);
 		V_10 = L_40;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:404>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:412>
 		FlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD* L_41 = V_10;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_42;
@@ -8012,7 +8016,7 @@ IL_00d6:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:404>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:412>
 		FlashCoin_tF455F56E4BDBCA8B2B2B3725279DCE124F9615BD* L_43 = V_10;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_44 = V_8;
 		NullCheck(L_43);
@@ -8021,7 +8025,7 @@ IL_00d6:
 
 IL_00f1:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:407>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:415>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_45 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_46;
@@ -8042,7 +8046,7 @@ IL_00f1:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:409>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:417>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_49 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_50 = __this->___popOutSound;
 		NullCheck(L_49);
@@ -8051,7 +8055,7 @@ IL_00f1:
 
 IL_011e:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:411>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:419>
 		return;
 	}
 }
@@ -8059,13 +8063,13 @@ IL_011e:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_FreezeInput_m14818C3741C9C6A339F006946970014A2487D91B (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, float ___0_duration, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:416>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:424>
 		float L_0 = ___0_duration;
 		RuntimeObject* L_1;
 		L_1 = GameManager_FreezeInputRoutine_m6A35A68E4FD9102F104CAF17CF8FF9FAB2EF4003(__this, L_0, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_2;
 		L_2 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_1, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:417>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:425>
 		return;
 	}
 }
@@ -8102,7 +8106,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ScreenShake_mF6DDB2D692805A7
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:438>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:446>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___screenShakeTarget;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8113,7 +8117,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ScreenShake_mF6DDB2D692805A7
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:440>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:448>
 		RuntimeObject* L_2;
 		L_2 = GameManager_ScreenShakeRoutine_m23F922E586523DCE2AE4C99E415CC8BBDEDB3974(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_3;
@@ -8122,7 +8126,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_ScreenShake_mF6DDB2D692805A7
 
 IL_001b:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:442>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:450>
 		return;
 	}
 }
@@ -8149,12 +8153,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameManager_ScreenShakeRoutine
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_TriggerFlashbang_m7B2663F14670335ED28C3F7CB1E96D61933FFE57 (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:471>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:479>
 		RuntimeObject* L_0;
 		L_0 = GameManager_FlashbangRoutine_m455B93F78E9A976D6D4BD314FAA8068CBC14DE16(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_1;
 		L_1 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_0, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:472>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:480>
 		return;
 	}
 }
@@ -8204,18 +8208,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameManager_DizzyEffectRoutine
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_OnCoinPlacedCorrectly_m49ABD313CA0B6A9AC41279F465096BFDB5EC59AD (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* ___0_coin, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:558>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:566>
 		int32_t L_0 = __this->___correctCount;
 		__this->___correctCount = ((int32_t)il2cpp_codegen_add(L_0, 1));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:559>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:567>
 		int32_t L_1 = __this->___score;
 		int32_t L_2 = __this->___pointsPerCorrectPlacement;
 		__this->___score = ((int32_t)il2cpp_codegen_add(L_1, L_2));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:560>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:568>
 		GameManager_UpdateScoreDisplay_m8CF84F7DB60A3277610E14522B75F60C6B94C92A(__this, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:561>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:569>
 		GameManager_CheckStageComplete_m7FFF6703574E951C573D42B93269206F439F60C3(__this, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:562>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:570>
 		return;
 	}
 }
@@ -8230,7 +8234,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_UpdateScoreDisplay_m8CF84F7D
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:566>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:574>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_0 = __this->___scoreText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8241,7 +8245,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_UpdateScoreDisplay_m8CF84F7D
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:566>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:574>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_2 = __this->___scoreText;
 		int32_t* L_3 = (int32_t*)(&__this->___score);
 		String_t* L_4;
@@ -8254,7 +8258,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_UpdateScoreDisplay_m8CF84F7D
 
 IL_002e:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:567>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:575>
 		return;
 	}
 }
@@ -8268,7 +8272,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayButtonClickSound_mD555BB
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:572>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:580>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_0 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8289,7 +8293,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayButtonClickSound_mD555BB
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:574>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:582>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_4 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_5 = __this->___buttonClickSound;
 		NullCheck(L_4);
@@ -8298,7 +8302,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayButtonClickSound_mD555BB
 
 IL_002d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:576>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:584>
 		return;
 	}
 }
@@ -8312,7 +8316,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombExplodeSound_m58C8EF
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:581>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:589>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_0 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8333,7 +8337,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombExplodeSound_m58C8EF
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:583>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:591>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_4 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_5 = __this->___bombExplodeSound;
 		NullCheck(L_4);
@@ -8342,7 +8346,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombExplodeSound_m58C8EF
 
 IL_002d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:585>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:593>
 		return;
 	}
 }
@@ -8356,7 +8360,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombDefuseSound_mB1DF5CD
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:590>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:598>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_0 = __this->___sfxAudioSource;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8377,7 +8381,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombDefuseSound_mB1DF5CD
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:592>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:600>
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_4 = __this->___sfxAudioSource;
 		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_5 = __this->___bombDefuseSound;
 		NullCheck(L_4);
@@ -8386,7 +8390,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_PlayBombDefuseSound_mB1DF5CD
 
 IL_002d:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:594>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:602>
 		return;
 	}
 }
@@ -8394,10 +8398,10 @@ IL_002d:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_OnCoinRemovedFromCorrectPlace_m9CF9E564896FEDCA58EEFBBBB0A1E5D59A00D71D (GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* __this, DraggableCoin_tF4845C41AA161D4AC81EFE910C607D110934537A* ___0_coin, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:598>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:606>
 		int32_t L_0 = __this->___correctCount;
 		__this->___correctCount = ((int32_t)il2cpp_codegen_subtract(L_0, 1));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:599>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:607>
 		return;
 	}
 }
@@ -8411,7 +8415,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_CheckStageComplete_m7FFF6703
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:604>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:612>
 		bool L_0 = __this->___isSpawning;
 		if (L_0)
 		{
@@ -8430,16 +8434,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_CheckStageComplete_m7FFF6703
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:606>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:614>
 		int32_t L_4 = __this->___currentStage;
 		__this->___currentStage = ((int32_t)il2cpp_codegen_add(L_4, 1));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:607>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:615>
 		GameManager_StartStage_m3221063E8A5F3539816F02B4D2732072A056E117(__this, NULL);
 	}
 
 IL_002f:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:609>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:617>
 		return;
 	}
 }
@@ -8457,9 +8461,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_GameOver_mF1BD400E7F84A0B533
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:613>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:621>
 		__this->___isGameOver = (bool)1;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:615>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:623>
 		GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914* L_0 = ((GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914_StaticFields*)il2cpp_codegen_static_fields_for(GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914_il2cpp_TypeInfo_var))->___Instance;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8470,7 +8474,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_GameOver_mF1BD400E7F84A0B533
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:617>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:625>
 		GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914* L_2 = ((GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914_StaticFields*)il2cpp_codegen_static_fields_for(GameOverUI_tED6E1D9D1616BF7C870AEDB25B882281D25F4914_il2cpp_TypeInfo_var))->___Instance;
 		int32_t L_3 = __this->___currentStage;
 		int32_t L_4 = __this->___score;
@@ -8481,7 +8485,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameManager_GameOver_mF1BD400E7F84A0B533
 
 IL_002b:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:621>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:629>
 		int32_t* L_5 = (int32_t*)(&__this->___currentStage);
 		String_t* L_6;
 		L_6 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5(L_5, NULL);
@@ -8492,7 +8496,7 @@ IL_002b:
 		L_9 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(_stringLiteralEAE1C12B6866533A81E3DB0DE78B3E603F3E1814, L_6, _stringLiteral91102268025FF1A124204E2BD4B3A1F5729DE9F7, L_8, NULL);
 		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		Debug_LogWarning_m33EF1B897E0C7C6FF538989610BFAFFEF4628CA9(L_9, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:623>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:631>
 		return;
 	}
 }
@@ -8716,7 +8720,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CDizzyEffectRoutineU3Ed__82_MoveNext_m
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:527>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:535>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_4 = V_1;
 		NullCheck(L_4);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_5 = L_4->___screenShakeTarget;
@@ -8729,35 +8733,35 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:527>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:535>
 		return (bool)0;
 	}
 
 IL_0031:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:529>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:537>
 		__this->___U3CtU3E5__2 = (0.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:530>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:538>
 		__this->___U3CfrequencyU3E5__3 = (12.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:531>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:539>
 		__this->___U3CmaxAngleU3E5__4 = (5.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:532>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:540>
 		__this->___U3CmaxScaleU3E5__5 = (0.0500000007f);
 		goto IL_012e;
 	}
 
 IL_0062:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:536>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:544>
 		float L_7 = __this->___U3CtU3E5__2;
 		float L_8;
 		L_8 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CtU3E5__2 = ((float)il2cpp_codegen_add(L_7, L_8));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:537>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:545>
 		float L_9 = __this->___U3CtU3E5__2;
 		float L_10 = __this->___duration;
 		V_2 = ((float)(L_9/L_10));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:540>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:548>
 		float L_11 = __this->___U3CtU3E5__2;
 		float L_12 = __this->___U3CfrequencyU3E5__3;
 		float L_13;
@@ -8765,7 +8769,7 @@ IL_0062:
 		float L_14 = __this->___U3CmaxAngleU3E5__4;
 		float L_15 = V_2;
 		V_3 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_13, L_14)), ((float)il2cpp_codegen_subtract((1.0f), L_15))));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:541>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:549>
 		float L_16 = __this->___U3CtU3E5__2;
 		float L_17 = __this->___U3CfrequencyU3E5__3;
 		float L_18;
@@ -8773,7 +8777,7 @@ IL_0062:
 		float L_19 = __this->___U3CmaxScaleU3E5__5;
 		float L_20 = V_2;
 		V_4 = ((float)il2cpp_codegen_multiply(((float)il2cpp_codegen_multiply(L_18, L_19)), ((float)il2cpp_codegen_subtract((1.0f), L_20))));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:545>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:553>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_21 = V_1;
 		NullCheck(L_21);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_22 = L_21->___screenShakeTarget;
@@ -8787,7 +8791,7 @@ IL_0062:
 		L_27 = Quaternion_op_Multiply_mCB375FCCC12A2EC8F9EB824A1BFB4453B58C2012_inline(L_24, L_26, NULL);
 		NullCheck(L_22);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_22, L_27, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:546>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:554>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_28 = V_1;
 		NullCheck(L_28);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_29 = L_28->___screenShakeTarget;
@@ -8803,7 +8807,7 @@ IL_0062:
 		L_35 = Vector3_op_Addition_m78C0EC70CB66E8DCAC225743D82B268DAEE92067_inline(L_31, L_34, NULL);
 		NullCheck(L_29);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_29, L_35, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:548>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:556>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -8817,7 +8821,7 @@ IL_0127:
 
 IL_012e:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:534>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:542>
 		float L_36 = __this->___U3CtU3E5__2;
 		float L_37 = __this->___duration;
 		if ((((float)L_36) < ((float)L_37)))
@@ -8826,7 +8830,7 @@ IL_012e:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:552>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:560>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_38 = V_1;
 		NullCheck(L_38);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_39 = L_38->___screenShakeTarget;
@@ -8835,7 +8839,7 @@ IL_012e:
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_41 = L_40->___shakeBaselineRot;
 		NullCheck(L_39);
 		Transform_set_localRotation_mAB4A011D134BA58AB780BECC0025CA65F16185FA(L_39, L_41, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:553>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:561>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_42 = V_1;
 		NullCheck(L_42);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_43 = L_42->___screenShakeTarget;
@@ -8844,7 +8848,7 @@ IL_012e:
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_45 = L_44->___shakeBaselineScale;
 		NullCheck(L_43);
 		Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633(L_43, L_45, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:554>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:562>
 		return (bool)0;
 	}
 }
@@ -8940,12 +8944,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CFlashbangRoutineU3Ed__81_MoveNext_m32
 IL_0022:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:476>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:484>
 		int32_t L_3 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount = ((int32_t)il2cpp_codegen_add(L_3, 1));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:477>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:485>
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___IsInputFrozen = (bool)1;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:479>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:487>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_4 = V_1;
 		NullCheck(L_4);
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_5 = L_4->___sfxAudioSource;
@@ -8970,7 +8974,7 @@ IL_0022:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:481>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:489>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_10 = V_1;
 		NullCheck(L_10);
 		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_11 = L_10->___sfxAudioSource;
@@ -8983,7 +8987,7 @@ IL_0022:
 
 IL_0068:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:484>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:492>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_14 = V_1;
 		NullCheck(L_14);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_15 = L_14->___flashOverlayImage;
@@ -8996,7 +9000,7 @@ IL_0068:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:486>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:494>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_17 = V_1;
 		NullCheck(L_17);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_18 = L_17->___flashOverlayImage;
@@ -9005,7 +9009,7 @@ IL_0068:
 		L_19 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_18, NULL);
 		NullCheck(L_19);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_19, (bool)1, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:488>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:496>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_20 = V_1;
 		NullCheck(L_20);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_21 = L_20->___flashOverlayImage;
@@ -9013,21 +9017,21 @@ IL_0068:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_22;
 		L_22 = VirtualFuncInvoker0< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(22, L_21);
 		__this->___U3CcU3E5__2 = L_22;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:489>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:497>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* L_23 = (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F*)(&__this->___U3CcU3E5__2);
 		L_23->___a = (1.0f);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:490>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:498>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_24 = V_1;
 		NullCheck(L_24);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_25 = L_24->___flashOverlayImage;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_26 = __this->___U3CcU3E5__2;
 		NullCheck(L_25);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_25, L_26);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:493>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:501>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_27 = V_1;
 		NullCheck(L_27);
 		GameManager_ShuffleZonePositions_mF7664E42FB3A6DCA0A0C4EB6BCFB4BD1A7C9AB91(L_27, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:496>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:504>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_28 = V_1;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_29 = V_1;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_30 = V_1;
@@ -9039,19 +9043,19 @@ IL_0068:
 		NullCheck(L_28);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_33;
 		L_33 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(L_28, L_32, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:499>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:507>
 		__this->___U3CtU3E5__3 = (0.0f);
 		goto IL_0143;
 	}
 
 IL_00e2:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:502>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:510>
 		float L_34 = __this->___U3CtU3E5__3;
 		float L_35;
 		L_35 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CtU3E5__3 = ((float)il2cpp_codegen_add(L_34, L_35));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:503>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:511>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* L_36 = (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F*)(&__this->___U3CcU3E5__2);
 		float L_37 = __this->___U3CtU3E5__3;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_38 = V_1;
@@ -9060,14 +9064,14 @@ IL_00e2:
 		float L_40;
 		L_40 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline((1.0f), (0.0f), ((float)(L_37/L_39)), NULL);
 		L_36->___a = L_40;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:504>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:512>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_41 = V_1;
 		NullCheck(L_41);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_42 = L_41->___flashOverlayImage;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_43 = __this->___U3CcU3E5__2;
 		NullCheck(L_42);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_42, L_43);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:505>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:513>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -9081,7 +9085,7 @@ IL_013c:
 
 IL_0143:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:500>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:508>
 		float L_44 = __this->___U3CtU3E5__3;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_45 = V_1;
 		NullCheck(L_45);
@@ -9092,7 +9096,7 @@ IL_0143:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:508>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:516>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_47 = V_1;
 		NullCheck(L_47);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_48 = L_47->___flashOverlayImage;
@@ -9101,7 +9105,7 @@ IL_0143:
 		L_49 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_48, NULL);
 		NullCheck(L_49);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_49, (bool)0, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:509>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:517>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* L_50 = (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F*)(&__this->___U3CcU3E5__2);
 		il2cpp_codegen_initobj(L_50, sizeof(Color_tD001788D726C3A7F1379BEED0260B9591F440C1F));
 		goto IL_01aa;
@@ -9109,11 +9113,11 @@ IL_0143:
 
 IL_0170:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:512>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:520>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_51 = V_1;
 		NullCheck(L_51);
 		GameManager_ShuffleZonePositions_mF7664E42FB3A6DCA0A0C4EB6BCFB4BD1A7C9AB91(L_51, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:513>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:521>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_52 = V_1;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_53 = V_1;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_54 = V_1;
@@ -9125,7 +9129,7 @@ IL_0170:
 		NullCheck(L_52);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_57;
 		L_57 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(L_52, L_56, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:514>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:522>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_58 = V_1;
 		NullCheck(L_58);
 		float L_59 = L_58->___flashDuration;
@@ -9144,12 +9148,12 @@ IL_01a3:
 
 IL_01aa:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:517>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:525>
 		int32_t L_61 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		int32_t L_62;
 		L_62 = Mathf_Max_m7FA442918DE37E3A00106D1F2E789D65829792B8_inline(0, ((int32_t)il2cpp_codegen_subtract(L_61, 1)), NULL);
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount = L_62;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:518>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:526>
 		int32_t L_63 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		if (L_63)
 		{
@@ -9157,13 +9161,13 @@ IL_01aa:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:520>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:528>
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___IsInputFrozen = (bool)0;
 	}
 
 IL_01c9:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:522>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:530>
 		return (bool)0;
 	}
 }
@@ -9255,12 +9259,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CFreezeInputRoutineU3Ed__77_MoveNext_m
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:421>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:429>
 		int32_t L_4 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount = ((int32_t)il2cpp_codegen_add(L_4, 1));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:422>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:430>
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___IsInputFrozen = (bool)1;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:423>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:431>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_5 = V_1;
 		NullCheck(L_5);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = L_5->___freezeOverlay;
@@ -9273,7 +9277,7 @@ IL_0017:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:423>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:431>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_8 = V_1;
 		NullCheck(L_8);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = L_8->___freezeOverlay;
@@ -9283,7 +9287,7 @@ IL_0017:
 
 IL_004a:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:425>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:433>
 		float L_10 = __this->___duration;
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_11 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_11, L_10, NULL);
@@ -9296,12 +9300,12 @@ IL_004a:
 IL_0064:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:427>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:435>
 		int32_t L_12 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		int32_t L_13;
 		L_13 = Mathf_Max_m7FA442918DE37E3A00106D1F2E789D65829792B8_inline(0, ((int32_t)il2cpp_codegen_subtract(L_12, 1)), NULL);
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount = L_13;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:428>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:436>
 		int32_t L_14 = ((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___freezeRequestCount;
 		if (L_14)
 		{
@@ -9309,9 +9313,9 @@ IL_0064:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:430>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:438>
 		((GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_StaticFields*)il2cpp_codegen_static_fields_for(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6_il2cpp_TypeInfo_var))->___IsInputFrozen = (bool)0;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:431>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:439>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_15 = V_1;
 		NullCheck(L_15);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = L_15->___freezeOverlay;
@@ -9324,7 +9328,7 @@ IL_0064:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:431>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:439>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_18 = V_1;
 		NullCheck(L_18);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = L_18->___freezeOverlay;
@@ -9334,7 +9338,7 @@ IL_0064:
 
 IL_00a4:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:433>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:441>
 		return (bool)0;
 	}
 }
@@ -9420,38 +9424,38 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CMoveZoneSmoothU3Ed__69_MoveNext_m0E10
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:228>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:236>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_4 = __this->___zoneRect;
 		NullCheck(L_4);
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_5;
 		L_5 = RectTransform_get_anchoredPosition_m38F25A4253B0905BB058BE73DBF43C7172CE0680(L_4, NULL);
 		__this->___U3CstartPosU3E5__2 = L_5;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:229>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:237>
 		__this->___U3CtU3E5__3 = (0.0f);
 		goto IL_00a0;
 	}
 
 IL_003f:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:233>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:241>
 		float L_6 = __this->___U3CtU3E5__3;
 		float L_7;
 		L_7 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CtU3E5__3 = ((float)il2cpp_codegen_add(L_6, L_7));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:234>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:242>
 		float L_8 = __this->___U3CtU3E5__3;
 		float L_9 = __this->___duration;
 		float L_10;
 		L_10 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_8/L_9)), NULL);
 		V_2 = L_10;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:235>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:243>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_11 = V_1;
 		float L_12 = V_2;
 		NullCheck(L_11);
 		float L_13;
 		L_13 = GameManager_EaseInOutQuad_m8A42A134709C7F4C11BFBCCAB873530C6866F9AD(L_11, L_12, NULL);
 		V_3 = L_13;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:236>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:244>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_14 = __this->___zoneRect;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_15 = __this->___U3CstartPosU3E5__2;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_16 = __this->___targetPos;
@@ -9460,7 +9464,7 @@ IL_003f:
 		L_18 = Vector2_Lerp_m1A36103F7967F653A929556E26E6D052C298C00C_inline(L_15, L_16, L_17, NULL);
 		NullCheck(L_14);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_14, L_18, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:237>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:245>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -9474,7 +9478,7 @@ IL_0099:
 
 IL_00a0:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:231>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:239>
 		float L_19 = __this->___U3CtU3E5__3;
 		float L_20 = __this->___duration;
 		if ((((float)L_19) < ((float)L_20)))
@@ -9483,12 +9487,12 @@ IL_00a0:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:240>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:248>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_21 = __this->___zoneRect;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_22 = __this->___targetPos;
 		NullCheck(L_21);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_21, L_22, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:241>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:249>
 		return (bool)0;
 	}
 }
@@ -9576,25 +9580,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CScreenShakeRoutineU3Ed__79_MoveNext_m
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:446>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:454>
 		__this->___U3CtU3E5__2 = (0.0f);
 		goto IL_00a6;
 	}
 
 IL_002e:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:450>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:458>
 		float L_4 = __this->___U3CtU3E5__2;
 		float L_5;
 		L_5 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CtU3E5__2 = ((float)il2cpp_codegen_add(L_4, L_5));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:451>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:459>
 		float L_6 = __this->___U3CtU3E5__2;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_7 = V_1;
 		NullCheck(L_7);
 		float L_8 = L_7->___shakeDuration;
 		V_2 = ((float)(L_6/L_8));
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:454>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:462>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_9 = V_1;
 		NullCheck(L_9);
 		float L_10 = L_9->___shakeMagnitude;
@@ -9602,10 +9606,10 @@ IL_002e:
 		float L_12;
 		L_12 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline(L_10, (0.0f), L_11, NULL);
 		V_3 = L_12;
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:455>
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:456>
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:457>
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:458>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:463>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:464>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:465>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:466>
 		float L_13 = V_3;
 		float L_14 = V_3;
 		float L_15;
@@ -9615,7 +9619,7 @@ IL_002e:
 		float L_18;
 		L_18 = Random_Range_m5236C99A7D8AE6AC9190592DC66016652A2D2494(((-L_16)), L_17, NULL);
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&V_4), L_15, L_18, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:462>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:470>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_19 = V_1;
 		NullCheck(L_19);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_20 = L_19->___screenShakeTarget;
@@ -9627,7 +9631,7 @@ IL_002e:
 		L_24 = Vector2_op_Addition_m8136742CE6EE33BA4EB81C5F584678455917D2AE_inline(L_22, L_23, NULL);
 		NullCheck(L_20);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_20, L_24, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:463>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:471>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -9641,7 +9645,7 @@ IL_009f:
 
 IL_00a6:
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:448>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:456>
 		float L_25 = __this->___U3CtU3E5__2;
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_26 = V_1;
 		NullCheck(L_26);
@@ -9652,7 +9656,7 @@ IL_00a6:
 		}
 	}
 	{
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:466>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:474>
 		GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_28 = V_1;
 		NullCheck(L_28);
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_29 = L_28->___screenShakeTarget;
@@ -9661,7 +9665,7 @@ IL_00a6:
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_31 = L_30->___shakeBaselinePos;
 		NullCheck(L_29);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_29, L_31, NULL);
-		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:467>
+		//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:475>
 		return (bool)0;
 	}
 }
@@ -9848,11 +9852,11 @@ FAULT_0358:
 IL_001f_1:
 			{
 				__this->___U3CU3E1__state = (-1);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:260>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:268>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_4 = V_2;
 				NullCheck(L_4);
 				L_4->___isSpawning = (bool)1;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:262>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:270>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_5 = V_2;
 				NullCheck(L_5);
 				int32_t L_6 = L_5->___baseTotalCoins;
@@ -9863,7 +9867,7 @@ IL_001f_1:
 				NullCheck(L_9);
 				int32_t L_10 = L_9->___coinsIncrementPerStage;
 				V_3 = ((int32_t)il2cpp_codegen_add(L_6, ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_subtract(L_8, 1)), L_10))));
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:263>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:271>
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_11 = (List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B*)il2cpp_codegen_object_new(List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B_il2cpp_TypeInfo_var);
 				List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC(L_11, List_1__ctor_m447372C1EF7141193B93090A77395B786C72C7BC_RuntimeMethod_var);
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_12 = L_11;
@@ -9891,18 +9895,18 @@ IL_001f_1:
 				NullCheck(L_21);
 				List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_inline(L_21, L_23, List_1_Add_m43FBF207375C6E06B8C45ECE614F9B8008FB686E_RuntimeMethod_var);
 				V_4 = L_21;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:264>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:272>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_24 = (List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769*)il2cpp_codegen_object_new(List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769_il2cpp_TypeInfo_var);
 				List_1__ctor_m3259C1FB1BB09A64E6767A61DC4A5E4C2B6C4BE9(L_24, List_1__ctor_m3259C1FB1BB09A64E6767A61DC4A5E4C2B6C4BE9_RuntimeMethod_var);
 				V_5 = L_24;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:267>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:275>
 				V_6 = 0;
 				goto IL_00c9_1;
 			}
 
 IL_0087_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:269>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:277>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_25 = V_5;
 				il2cpp_codegen_initobj((&V_7), sizeof(SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4));
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_26 = V_4;
@@ -9922,14 +9926,14 @@ IL_0087_1:
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_31 = V_7;
 				NullCheck(L_25);
 				List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_inline(L_25, L_31, List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_RuntimeMethod_var);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:267>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:275>
 				int32_t L_32 = V_6;
 				V_6 = ((int32_t)il2cpp_codegen_add(L_32, 1));
 			}
 
 IL_00c9_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:267>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:275>
 				int32_t L_33 = V_6;
 				int32_t L_34 = V_3;
 				if ((((int32_t)L_33) < ((int32_t)L_34)))
@@ -9938,7 +9942,7 @@ IL_00c9_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:273>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:281>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_35 = V_2;
 				NullCheck(L_35);
 				int32_t L_36 = L_35->___currentStage;
@@ -9972,7 +9976,7 @@ IL_00c9_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:275>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:283>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_44 = V_2;
 				NullCheck(L_44);
 				int32_t L_45 = L_44->___bombCoinsPerStage;
@@ -9986,14 +9990,14 @@ IL_00c9_1:
 				NullCheck(L_50);
 				int32_t L_51 = L_50->___bombCoinsIncrementPerStage;
 				V_8 = ((int32_t)il2cpp_codegen_add(L_45, ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_subtract(L_47, L_49)), L_51))));
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:277>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:285>
 				V_9 = 0;
 				goto IL_0168_1;
 			}
 
 IL_011a_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:279>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:287>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_52 = V_2;
 				NullCheck(L_52);
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_53 = L_52->___bombCoinPrefabs;
@@ -10009,7 +10013,7 @@ IL_011a_1:
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_58;
 				L_58 = List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979(L_53, L_57, List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979_RuntimeMethod_var);
 				V_10 = L_58;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:280>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:288>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_59 = V_5;
 				il2cpp_codegen_initobj((&V_7), sizeof(SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4));
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_60 = V_10;
@@ -10020,14 +10024,14 @@ IL_011a_1:
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_61 = V_7;
 				NullCheck(L_59);
 				List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_inline(L_59, L_61, List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_RuntimeMethod_var);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:277>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:285>
 				int32_t L_62 = V_9;
 				V_9 = ((int32_t)il2cpp_codegen_add(L_62, 1));
 			}
 
 IL_0168_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:277>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:285>
 				int32_t L_63 = V_9;
 				int32_t L_64 = V_8;
 				if ((((int32_t)L_63) < ((int32_t)L_64)))
@@ -10038,7 +10042,7 @@ IL_0168_1:
 
 IL_016e_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:285>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:293>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_65 = V_2;
 				NullCheck(L_65);
 				int32_t L_66 = L_65->___currentStage;
@@ -10072,7 +10076,7 @@ IL_016e_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:287>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:295>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_74 = V_2;
 				NullCheck(L_74);
 				int32_t L_75 = L_74->___flashCoinsPerStage;
@@ -10086,14 +10090,14 @@ IL_016e_1:
 				NullCheck(L_80);
 				int32_t L_81 = L_80->___flashCoinsIncrementPerStage;
 				V_11 = ((int32_t)il2cpp_codegen_add(L_75, ((int32_t)il2cpp_codegen_multiply(((int32_t)il2cpp_codegen_subtract(L_77, L_79)), L_81))));
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:289>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
 				V_12 = 0;
 				goto IL_0208_1;
 			}
 
 IL_01ba_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:291>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:299>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_82 = V_2;
 				NullCheck(L_82);
 				List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* L_83 = L_82->___flashCoinPrefabs;
@@ -10109,7 +10113,7 @@ IL_01ba_1:
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_88;
 				L_88 = List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979(L_83, L_87, List_1_get_Item_mE8DBE527F24D9CFED839C34216C475B716169979_RuntimeMethod_var);
 				V_13 = L_88;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:292>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:300>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_89 = V_5;
 				il2cpp_codegen_initobj((&V_7), sizeof(SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4));
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_90 = V_13;
@@ -10120,14 +10124,14 @@ IL_01ba_1:
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_91 = V_7;
 				NullCheck(L_89);
 				List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_inline(L_89, L_91, List_1_Add_m84BC9D2E6BB12D64E4C69AC0F49784C1BB3C019B_RuntimeMethod_var);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:289>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
 				int32_t L_92 = V_12;
 				V_12 = ((int32_t)il2cpp_codegen_add(L_92, 1));
 			}
 
 IL_0208_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:289>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
 				int32_t L_93 = V_12;
 				int32_t L_94 = V_11;
 				if ((((int32_t)L_93) < ((int32_t)L_94)))
@@ -10138,7 +10142,7 @@ IL_0208_1:
 
 IL_020e_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_95 = V_5;
 				NullCheck(L_95);
 				int32_t L_96;
@@ -10149,12 +10153,12 @@ IL_020e_1:
 
 IL_021b_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:299>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:307>
 				int32_t L_97 = V_14;
 				int32_t L_98;
 				L_98 = Random_Range_m6763D9767F033357F88B6637F048F4ACA4123B68(0, ((int32_t)il2cpp_codegen_add(L_97, 1)), NULL);
 				V_15 = L_98;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:300>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:308>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_99 = V_5;
 				int32_t L_100 = V_14;
 				V_16 = L_100;
@@ -10187,14 +10191,14 @@ IL_021b_1:
 				V_20 = L_115;
 				NullCheck(L_112);
 				List_1_set_Item_mA929B11D6A0CBB1F3B2D01A6262216462F334798(L_112, L_113, L_115, List_1_set_Item_mA929B11D6A0CBB1F3B2D01A6262216462F334798_RuntimeMethod_var);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
 				int32_t L_116 = V_14;
 				V_14 = ((int32_t)il2cpp_codegen_subtract(L_116, 1));
 			}
 
 IL_026b_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:297>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
 				int32_t L_117 = V_14;
 				if ((((int32_t)L_117) > ((int32_t)0)))
 				{
@@ -10202,7 +10206,7 @@ IL_026b_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:303>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:311>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_118 = V_2;
 				NullCheck(L_118);
 				float L_119 = L_118->___totalSpawnDuration;
@@ -10211,7 +10215,7 @@ IL_026b_1:
 				int32_t L_121;
 				L_121 = List_1_get_Count_m7CCAE8F0B04503FD141713039BFA18D197B44B72_inline(L_120, List_1_get_Count_m7CCAE8F0B04503FD141713039BFA18D197B44B72_RuntimeMethod_var);
 				__this->___U3CdelayBetweenSpawnsU3E5__2 = ((float)(L_119/((float)L_121)));
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:313>
 				List_1_t45029C338394427A7E42F6D8BEF729C1C7F94769* L_122 = V_5;
 				NullCheck(L_122);
 				Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC L_123;
@@ -10227,12 +10231,12 @@ IL_026b_1:
 
 IL_029f_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:313>
 				Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC* L_124 = (Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC*)(&__this->___U3CU3E7__wrap2);
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_125;
 				L_125 = Enumerator_get_Current_m9A40F8772093BDCB865FE2D0A6B147034F31B711_inline(L_124, Enumerator_get_Current_m9A40F8772093BDCB865FE2D0A6B147034F31B711_RuntimeMethod_var);
 				V_21 = L_125;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:307>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:315>
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_126 = V_21;
 				bool L_127 = L_126.___isFlash;
 				if (!L_127)
@@ -10241,10 +10245,10 @@ IL_029f_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:309>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:317>
 				il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 				Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral18F1D4EF6FD6489925B692FE62366B4F60E3F2DC, NULL);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:310>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:318>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_128 = V_2;
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_129 = V_21;
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_130 = L_129.___prefab;
@@ -10255,7 +10259,7 @@ IL_029f_1:
 
 IL_02ce_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:312>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:320>
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_131 = V_21;
 				bool L_132 = L_131.___isBomb;
 				if (!L_132)
@@ -10264,10 +10268,10 @@ IL_02ce_1:
 				}
 			}
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:314>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:322>
 				il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 				Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral5D1E60948D6BCAE56D8210641AD138C96F0BE5FF, NULL);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:315>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:323>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_133 = V_2;
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_134 = V_21;
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_135 = L_134.___prefab;
@@ -10278,10 +10282,10 @@ IL_02ce_1:
 
 IL_02f0_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:319>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:327>
 				il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 				Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral3A653DE22B67F2FEA0DDCF062DA4D66E99E565D5, NULL);
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:320>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:328>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_136 = V_2;
 				SpawnItem_t85C0EAE6277AF5E8B1D1F4DA06BC30BE99216BE4 L_137 = V_21;
 				GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_138 = L_137.___prefab;
@@ -10291,7 +10295,7 @@ IL_02f0_1:
 
 IL_0307_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:323>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:331>
 				float L_139 = __this->___U3CdelayBetweenSpawnsU3E5__2;
 				WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_140 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 				WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_140, L_139, NULL);
@@ -10309,7 +10313,7 @@ IL_0323_1:
 
 IL_032b_1:
 			{
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:305>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:313>
 				Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC* L_141 = (Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC*)(&__this->___U3CU3E7__wrap2);
 				bool L_142;
 				L_142 = Enumerator_MoveNext_m194A06ABE4BA2369DC391A8311978F810E15E602(L_141, Enumerator_MoveNext_m194A06ABE4BA2369DC391A8311978F810E15E602_RuntimeMethod_var);
@@ -10322,11 +10326,11 @@ IL_032b_1:
 				U3CSpawnCoinsRoutineU3Ed__72_U3CU3Em__Finally1_mCF13F7B0369527073D1B44482FA75C73F2EAAC26(__this, NULL);
 				Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC* L_143 = (Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC*)(&__this->___U3CU3E7__wrap2);
 				il2cpp_codegen_initobj(L_143, sizeof(Enumerator_t5BFBEB5AB9D560C0F2DBF7007F8115C10617B5FC));
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:326>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:334>
 				GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6* L_144 = V_2;
 				NullCheck(L_144);
 				L_144->___isSpawning = (bool)0;
-				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:327>
+				//<source_info:C:/Users/Xavi/UnityProjects/DisorderCoins/Assets/Scripts/GameManager.cs:335>
 				V_0 = (bool)0;
 				goto IL_035f;
 			}

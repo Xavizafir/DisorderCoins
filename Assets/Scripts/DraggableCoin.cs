@@ -185,4 +185,37 @@ public class DraggableCoin : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         return null;
     }
+
+    // Dipanggil dari GameManager.cs SETELAH zona selesai geser (shuffle biasa / abis flash).
+    // Cek ulang: posisi koin ini SEKARANG lagi nempatin zona mana, dan apakah itu masih bener.
+    // Kalau ternyata udah gak bener lagi (zonanya udah pindah), status IsPlacedCorrectly
+    // otomatis dibatalin, biar player kepaksa nge-drag ulang.
+    public void RevalidateAgainstZones(List<DropZone> allZones)
+    {
+        DropZone overlappingZone = null;
+        foreach (DropZone zone in allZones)
+        {
+            if (zone != null && zone.ContainsWorldPosition(rectTransform.position))
+            {
+                overlappingZone = zone;
+                break;
+            }
+        }
+
+        bool nowCorrect = overlappingZone != null && overlappingZone.IsCorrectCoin(this);
+
+        if (nowCorrect != IsPlacedCorrectly)
+        {
+            IsPlacedCorrectly = nowCorrect;
+
+            if (nowCorrect)
+            {
+                GameManager.Instance.OnCoinPlacedCorrectly(this);
+            }
+            else
+            {
+                GameManager.Instance.OnCoinRemovedFromCorrectPlace(this);
+            }
+        }
+    }
 }
