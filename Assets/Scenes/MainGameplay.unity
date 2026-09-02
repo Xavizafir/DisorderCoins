@@ -5159,7 +5159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4.1666665, y: -50}
+  m_AnchoredPosition: {x: 4.166668, y: -50}
   m_SizeDelta: {x: 8.333333, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1231651287
@@ -5721,6 +5721,7 @@ MonoBehaviour:
   tutorialPanelRoot: {fileID: 1355207292}
   tutorialCanvasGroup: {fileID: 1355207296}
   fadeDuration: 0.4
+  disableTutorial: 0
   pages:
   - {fileID: 57174210}
   - {fileID: 1548243711}
