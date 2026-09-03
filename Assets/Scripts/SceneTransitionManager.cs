@@ -19,21 +19,36 @@ public class SceneTransitionManager : MonoBehaviour
 
     void Awake()
     {
+        // WAJIB reset FadeOverlay lokal scene ini ke kondisi aman DULUAN, SEBELUM cek duplicate.
+        // Kalau dibalik urutannya (cek duplicate dulu baru reset), instance yang ternyata
+        // duplicate bakal langsung ke-Destroy tanpa sempet reset FadeOverlay-nya sendiri —
+        // ninggalin FadeOverlay itu numpuk di layar dengan kondisi blocksRaycasts=true selamanya,
+        // nutupin klik ke semua tombol di scene itu.
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.interactable = false;
+            fadeCanvasGroup.blocksRaycasts = false;
+        }
+
         // Singleton: kalau udah ada instance lain (dari scene sebelumnya yang persist), hapus yang baru
         if (Instance != null && Instance != this)
         {
+            // PENTING: FadeOverlay punya instance lama itu udah ke-hapus (scene lamanya di-unload),
+            // jadi "serahterimakan" FadeOverlay versi scene INI (yang masih fresh & valid) ke instance
+            // yang persist. Tanpa ini, fade cuma jalan SEKALI doang (di transisi pertama), abis itu
+            // instance yang persist bakal terus nyoba pake referensi FadeOverlay yang udah gak ada.
+            if (fadeCanvasGroup != null)
+            {
+                Instance.fadeCanvasGroup = fadeCanvasGroup;
+            }
+
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        if (fadeCanvasGroup != null)
-        {
-            fadeCanvasGroup.alpha = 0f;
-            fadeCanvasGroup.blocksRaycasts = false;
-        }
     }
 
     // Panggil ini dari tombol Play / Restart / Menu, gantiin SceneManager.LoadScene() biasa
